@@ -3,258 +3,347 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Сайты через ИИ — курс о том, как собирать сайты, которые не палятся</title>
-<meta name="description" content="Практический курс для тех, кто разбирается в сайтах, но не программирует. 8 модулей, 5 рабочих инструментов и файлы правил для твоей нейросети — чтобы она собирала как дизайнер, а не как шаблон.">
+<title>Сайты через ИИ — курс о сайтах, которые не палятся</title>
+<meta name="description" content="Нейросеть собирает сайты по одному шаблону, и клиент видит это за долю секунды. Курс о том, как чистить за ней руками: 8 модулей, 5 инструментов, файлы правил для твоей нейросети.">
 <meta property="og:title" content="Сайты через ИИ">
-<meta property="og:description" content="Курс о том, как собирать сайты нейросетью так, чтобы их не отличали от дизайнерских. 8 модулей, 5 инструментов, файлы правил.">
-<meta property="og:image" content="img/hero-wide.jpg">
-<meta name="theme-color" content="#0B0B0B">
+<meta property="og:description" content="Курс о том, как собирать сайты нейросетью так, чтобы их не отличали от дизайнерских.">
+<meta property="og:image" content="img/og.jpg">
+<meta name="theme-color" content="#F2F1ED">
 <script>document.documentElement.className="js";</script>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' fill='%23E8171F'/%3E%3Ctext x='12' y='17.5' font-family='Arial Black,sans-serif' font-size='15' font-weight='900' fill='%23fff' text-anchor='middle'%3E%D0%98%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2312110F'/%3E%3Crect x='4' y='4' width='11' height='24' fill='%23E8171F'/%3E%3Crect x='18' y='4' width='10' height='10' fill='%23F2F1ED'/%3E%3C/svg%3E">
 <style>
-@font-face{
-  font-family:"TildaSans";
-  src:url("font/TildaSans-VF.woff2") format("woff2-variations"),url("font/TildaSans-VF.woff2") format("woff2");
-  font-weight:250 900; font-style:normal; font-display:swap;
-}
+@font-face{font-family:"Unb";src:url("font/unbounded-500.woff2") format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Unb";src:url("font/unbounded-700.woff2") format("woff2");font-weight:700;font-display:swap}
+@font-face{font-family:"Unb";src:url("font/unbounded-800.woff2") format("woff2");font-weight:800;font-display:swap}
+@font-face{font-family:"Mnr";src:url("font/manrope-400.woff2") format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Mnr";src:url("font/manrope-500.woff2") format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Mnr";src:url("font/manrope-600.woff2") format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"Mnr";src:url("font/manrope-700.woff2") format("woff2");font-weight:700;font-display:swap}
+@font-face{font-family:"Jbm";src:url("font/jbmono-400.woff2") format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Jbm";src:url("font/jbmono-700.woff2") format("woff2");font-weight:700;font-display:swap}
+
 :root{
-  --accent:#E8171F; --accent-2:#B3121A; --yellow:#F5D33D;
-  --bg:#FFFFFF; --fg:#111111; --muted:#575757; --dim:#8A8A8A;
-  --line:#E5E5E5; --card:#F7F7F5; --cardline:#EAEAEA;
+  --paper:#F2F1ED;
+  --paper-2:#E9E7E1;
+  --ink:#12110F;
+  --ink-2:#3A3833;
+  --mut:#77736B;
+  --dim:#A29D94;
+  --line:#DAD6CD;
+  --red:#E8171F;
+  --red-d:#C0121A;
+  --d:"Unb",Impact,sans-serif;
+  --b:"Mnr",-apple-system,Segoe UI,Roboto,sans-serif;
+  --m:"Jbm",ui-monospace,Consolas,monospace;
+  --pad:clamp(20px,4.2vw,54px);
+  --maxw:1360px;
 }
-.dark{ --bg:#0B0B0B; --fg:#F1F1F1; --muted:#8C8C8C; --dim:#5E5E5E; --line:#242424; --card:#151515; --cardline:#252525; }
-*{ box-sizing:border-box; margin:0; padding:0; }
-html{ scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{
-  background:var(--bg); color:var(--fg);
-  font-family:"TildaSans",-apple-system,Segoe UI,Roboto,sans-serif;
-  font-size:16px; line-height:1.55; font-weight:400;
-  -webkit-font-smoothing:antialiased; overflow-x:hidden;
+  background:var(--paper);color:var(--ink);
+  font-family:var(--b);font-size:17px;line-height:1.6;font-weight:400;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
 }
-img,video{ display:block; max-width:100%; }
-a{ color:inherit; text-decoration:none; }
-button{ font:inherit; color:inherit; }
-section{ background:var(--bg); color:var(--fg); }
-
-.wrap{ width:100%; max-width:1220px; margin:0 auto; padding:0 clamp(18px,4vw,44px); }
-.sec{ padding:clamp(62px,8vw,116px) 0; }
-.lbl{ font-weight:700; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--dim); }
-.acc{ color:var(--accent); }
-
-h1,h2,h3,h4{ letter-spacing:-.03em; font-weight:900; line-height:.88; }
-h2{ font-size:clamp(30px,4.6vw,58px); text-transform:uppercase; }
-h2 .thin{ font-weight:300; text-transform:none; letter-spacing:-.025em; }
-h3{ font-size:clamp(21px,2.3vw,27px); letter-spacing:-.025em; line-height:1.06; }
-h4{ font-size:16.5px; line-height:1.25; letter-spacing:-.015em; font-weight:800; }
-p{ font-weight:400; }
-.lede{ font-size:clamp(16.5px,1.5vw,19px); line-height:1.5; color:var(--muted); max-width:34em; font-weight:300; }
-.dark .lede{ color:#CFCFCF; }
-
-/* ---------- buttons ---------- */
-.btn{
-  display:inline-flex; align-items:center; justify-content:center; gap:10px;
-  padding:15px 26px; font-size:15px; font-weight:800; letter-spacing:-.01em;
-  border:1px solid transparent; cursor:pointer; transition:.18s ease; white-space:nowrap;
+body::before{
+  content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E");
 }
-.btn svg{ width:16px; height:16px; flex:none; }
-.btn-red{ background:var(--accent); color:#fff; }
-.btn-red:hover{ background:var(--accent-2); }
-.btn-line{ background:transparent; color:var(--fg); border-color:var(--line); }
-.btn-line:hover{ border-color:var(--fg); }
-.dark .btn-line,.hero .btn-line,.final .btn-line{ border-color:#3A3A3A; color:#fff; }
-.dark .btn-line:hover,.hero .btn-line:hover,.final .btn-line:hover{ border-color:#fff; background:rgba(255,255,255,.06); }
-.btn-sm{ padding:10px 18px; font-size:13.5px; }
+img,video{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px}
 
-/* ---------- nav ---------- */
-.nav{ position:sticky; top:0; z-index:60; background:rgba(11,11,11,.86); backdrop-filter:blur(14px); border-bottom:1px solid #1D1D1D; }
-.nav-in{ display:flex; align-items:center; gap:20px; height:64px; }
-.logo{ display:flex; align-items:center; gap:10px; color:#fff; }
-.logo i{ width:28px; height:28px; background:var(--accent); color:#fff; display:grid; place-items:center; font-style:normal; font-weight:900; font-size:15px; }
-.logo b{ font-size:15px; font-weight:800; letter-spacing:-.02em; line-height:1.1; }
-.logo span{ display:block; font-size:10.5px; font-weight:400; color:#8C8C8C; letter-spacing:.02em; }
-.nav-links{ display:flex; gap:24px; margin-left:auto; font-size:14px; color:#9A9A9A; }
-.nav-links a:hover{ color:#fff; }
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
+.sec{padding:clamp(76px,10vw,164px) 0;position:relative}
+.dark{background:var(--ink);color:#F2F1ED}
+.dark .mono{color:#8B867D}
 
-/* ---------- hero ---------- */
-.hero{ position:relative; background:#0B0B0B; color:#F1F1F1; overflow:hidden; }
-.hero-bg{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; }
-.hero-scrim{ position:absolute; inset:0; z-index:1; pointer-events:none; background:
-  linear-gradient(90deg, rgba(8,8,8,.95) 26%, rgba(8,8,8,.52) 62%, rgba(8,8,8,.3) 100%),
-  linear-gradient(180deg, rgba(8,8,8,.6), transparent 26%, rgba(8,8,8,.4) 64%, rgba(8,8,8,.96)); }
-.hero-in{ position:relative; z-index:2; padding:clamp(52px,8vw,104px) 0 clamp(34px,4vw,54px); }
-.hero-tags{ display:flex; gap:7px; flex-wrap:wrap; margin-bottom:26px; }
-.tag{ display:inline-flex; padding:6px 13px; font-size:12px; font-weight:700; border:1px solid #333; color:#DADADA; }
-.tag.solid{ background:var(--yellow); color:#191500; border-color:var(--yellow); }
-h1{ font-size:clamp(38px,6.6vw,90px); text-transform:uppercase; margin-bottom:26px; }
-h1 .r{ color:var(--accent); }
-.hero .lede{ color:#CFCFCF; margin-bottom:30px; }
-.hero-cta{ display:flex; gap:10px; flex-wrap:wrap; }
-.hero-note{ margin-top:20px; font-size:13px; color:#8C8C8C; }
-.facts{ display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); border-top:1px solid #242424; position:relative; z-index:2; }
-.facts div{ padding:22px 0 26px; border-right:1px solid #242424; padding-right:16px; }
-.facts div:last-child{ border-right:0; }
-.facts b{ display:block; font-size:clamp(30px,3.6vw,46px); font-weight:900; letter-spacing:-.045em; line-height:.9; color:#fff; }
-.facts b.y{ color:var(--yellow); }
-.facts i{ display:block; font-style:normal; font-size:12.5px; color:#8C8C8C; margin-top:9px; line-height:1.35; }
+h1,h2,h3{font-family:var(--d);font-weight:800;letter-spacing:-.045em;line-height:.92}
+h1{font-size:clamp(28px,3.9vw,54px)}
+h2{font-size:clamp(24px,3vw,40px)}
+h3{font-size:clamp(18px,1.75vw,22px);font-weight:700;letter-spacing:-.035em;line-height:1.14}
+h4{font-family:var(--b);font-size:17px;font-weight:700;letter-spacing:-.015em;line-height:1.32}
+.mono{font-family:var(--m);font-size:11.5px;font-weight:400;letter-spacing:.08em;text-transform:uppercase;color:var(--mut)}
+.lede{font-size:clamp(17px,1.45vw,20px);line-height:1.55;color:var(--ink-2);max-width:33em}
+.dark .lede{color:#BEB9B0}
+.note{font-size:15px;line-height:1.6;color:var(--mut)}
 
-/* ---------- generic head ---------- */
-.head{ display:flex; flex-wrap:wrap; align-items:flex-end; gap:18px 46px; margin-bottom:clamp(28px,3.6vw,48px); }
-.head .t{ flex:1 1 560px; min-width:0; }
-.head h2{ margin-top:14px; }
-.head p{ flex:0 1 380px; color:var(--muted); font-size:15.5px; font-weight:400; }
+.rule{display:flex;align-items:baseline;gap:18px;border-top:1px solid var(--ink);padding-top:14px;margin-bottom:clamp(30px,4vw,54px)}
+.dark .rule{border-color:#33312D}
+.rule .mono{white-space:nowrap}
+.rule .ln{flex:1 1 auto}
 
-/* ---------- cards ---------- */
-.grid3{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; }
-.grid2{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
-.box{ border:1px solid var(--cardline); background:var(--card); padding:24px 24px 26px; min-width:0; }
-.box h4{ margin-bottom:9px; }
-.box p{ font-size:14.3px; color:var(--muted); line-height:1.56; }
-.box .ic{ width:26px; height:26px; color:var(--accent); margin-bottom:15px; }
-.box .ic svg{ width:26px; height:26px; }
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:11px;
+  padding:17px 30px;border:1.5px solid transparent;font-family:var(--b);
+  font-size:15.5px;font-weight:700;letter-spacing:-.01em;cursor:pointer;transition:.18s ease;white-space:nowrap}
+.btn svg{width:17px;height:17px;flex:none}
+.btn-red{background:var(--red);color:#fff}
+.btn-red:hover{background:var(--red-d)}
+.btn-ln{border-color:var(--ink);color:var(--ink)}
+.btn-ln:hover{background:var(--ink);color:var(--paper)}
+.dark .btn-ln{border-color:#4A4740;color:#F2F1ED}
+.dark .btn-ln:hover{background:#F2F1ED;color:var(--ink)}
+.btn-sm{padding:11px 19px;font-size:14px}
 
-/* ---------- showcase ---------- */
-.shots{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
-.shot{ border:1px solid var(--cardline); background:var(--card); overflow:hidden; }
-.shot img{ width:100%; aspect-ratio:1100/618; object-fit:cover; }
-.shot .cap{ display:flex; align-items:baseline; justify-content:space-between; gap:12px; padding:13px 15px; border-top:1px solid var(--cardline); }
-.shot .cap b{ font-size:14px; font-weight:800; letter-spacing:-.015em; }
-.shot .cap span{ font-size:12px; color:var(--dim); }
+.nav{position:sticky;top:0;z-index:80;background:rgba(242,241,237,.84);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;gap:26px;height:66px}
+.brand{display:flex;align-items:center;gap:11px}
+.brand .mk{width:26px;height:26px;flex:none}
+.brand b{font-family:var(--d);font-size:14.5px;font-weight:700;letter-spacing:-.04em;line-height:1.15;display:block}
+.brand i{font-style:normal;font-family:var(--m);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
+.nav-l{display:flex;gap:26px;margin-left:auto;font-family:var(--m);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--mut)}
+.nav-l a:hover{color:var(--ink)}
 
-/* ---------- modules ---------- */
-.mods{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1px; background:var(--cardline); border:1px solid var(--cardline); }
-.mod{ background:var(--bg); padding:20px 21px 22px; min-width:0; }
-.mod .n{ font-size:11px; font-weight:800; letter-spacing:.12em; color:var(--accent); }
-.mod h4{ margin:9px 0 7px; }
-.mod p{ font-size:13.6px; color:var(--muted); line-height:1.5; }
-.mod.hot{ background:#FFF8F8; }
-.mod.hot .n{ color:var(--accent); }
+.hero{padding:clamp(46px,6vw,86px) 0 0}
+.hero-g{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:clamp(26px,4vw,64px);align-items:end}
+.hero h1{margin:22px 0 26px}
+.hero h1 em{font-style:normal;color:var(--red)}
+.hero-cta{display:flex;gap:11px;flex-wrap:wrap;margin-top:34px}
+.hero-note{margin-top:20px;font-size:14px;color:var(--mut)}
+.hero-vid{position:relative;border:1px solid var(--line);background:var(--ink);overflow:hidden}
+.hero-vid video,.hero-vid img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:68% center;display:block}
+.hero-vid figcaption{position:absolute;left:0;right:0;bottom:0;padding:12px 14px;
+  background:linear-gradient(transparent,rgba(10,9,8,.92));color:#DCD8D0;font-family:var(--m);font-size:10.5px;letter-spacing:.07em;text-transform:uppercase}
+.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--ink);margin-top:clamp(40px,5vw,76px)}
+.facts>div{padding:26px 22px 30px 0;border-right:1px solid var(--line);min-width:0}
+.facts>div:last-child{border-right:0}
+.facts b{display:block;font-family:var(--d);font-size:clamp(30px,3.3vw,44px);font-weight:800;letter-spacing:-.06em;line-height:1}
+.facts b.r{color:var(--red)}
+.facts i{display:block;font-style:normal;font-size:13.5px;color:var(--mut);margin-top:11px;line-height:1.4}
 
-/* ---------- files ---------- */
-.files{ display:grid; gap:10px; margin-top:26px; }
-.file{ display:grid; grid-template-columns:38px minmax(0,1fr) 22px; gap:16px; align-items:center;
-  border:1px solid var(--cardline); background:var(--card); padding:17px 19px; transition:.18s; }
-.file:hover{ border-color:var(--accent); transform:translateY(-1px); }
-.file i{ width:38px; height:38px; background:var(--accent); color:#fff; display:grid; place-items:center; font-style:normal; font-weight:800; font-size:13px; }
-.file .t{ font-size:14px; line-height:1.5; color:var(--muted); min-width:0; }
-.file .t b{ display:block; font-size:15.5px; font-weight:800; color:var(--fg); letter-spacing:-.015em; margin-bottom:3px; }
-.file svg{ width:22px; height:22px; color:var(--dim); }
-.file:hover svg{ color:var(--accent); }
+.head{max-width:44em}
+.head h2{margin-bottom:20px}
+.head p{color:var(--mut);font-size:clamp(16px,1.3vw,18px);line-height:1.6;max-width:36em}
+.dark .head p{color:#9C978F}
+.head-sp{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:22px 56px;max-width:none}
+.head-sp .t{flex:1 1 620px;min-width:0}
+.head-sp .t h2{margin-bottom:0}
+.head-sp p{flex:0 1 400px}
 
-/* ---------- stand ---------- */
-.stand{ border:1px solid var(--cardline); background:var(--card); overflow:hidden; margin-top:26px; }
-.stand-top{ display:flex; align-items:center; justify-content:space-between; gap:14px; padding:13px 17px; border-bottom:1px solid var(--cardline); flex-wrap:wrap; }
-.sw{ display:flex; border:1px solid var(--cardline); background:#fff; }
-.sw button{ border:0; background:none; cursor:pointer; padding:8px 18px; font-size:11.5px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:var(--dim); transition:.16s; }
-.sw button:hover{ color:var(--fg); }
-.sw button.on{ background:var(--accent); color:#fff; }
-.specs{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1px; background:var(--cardline); }
-.spec{ background:var(--card); padding:16px 17px 18px; min-width:0; }
-.spec-h{ display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:11px; }
-.spec-h b{ font-size:14px; font-weight:800; letter-spacing:-.015em; }
-.spec-t{ border:1px solid var(--cardline); background:#fff; cursor:pointer; font-size:11px; font-weight:800; padding:5px 11px; color:var(--muted); white-space:nowrap; transition:.16s; }
-.spec-t:hover{ border-color:var(--accent); color:var(--accent); }
-.spec-view{ background:#fff; border:1px solid var(--cardline); min-height:152px; display:flex; align-items:center; padding:18px 16px; overflow:hidden; }
-.spec-view .v{ width:100%; min-width:0; }
-.spec .v-good{ display:none; }
-.spec.good .v-bad{ display:none; }
-.spec.good .v-good{ display:block; }
-.spec-p{ font-size:13px; line-height:1.55; color:var(--muted); margin-top:11px; }
+/* ============ COMPARE ============ */
+.cmp{position:relative;border:1px solid var(--ink);background:#fff;overflow:hidden;touch-action:pan-y;user-select:none;cursor:col-resize}
+.cmp-stage{position:relative;aspect-ratio:16/10}
+.cmp-l{position:absolute;inset:0;overflow:hidden}
+.cmp-top{clip-path:inset(0 calc(100% - var(--x,50%)) 0 0)}
+.cmp-hd{position:absolute;top:0;bottom:0;width:2px;background:var(--red);left:var(--x,50%);z-index:6;pointer-events:none}
+.cmp-kn{position:absolute;top:50%;left:var(--x,50%);transform:translate(-50%,-50%);z-index:7;
+  width:52px;height:52px;border-radius:50%;background:var(--red);color:#fff;display:grid;place-items:center;
+  box-shadow:0 8px 26px -8px rgba(232,23,31,.8);cursor:col-resize}
+.cmp-kn svg{width:22px;height:22px}
+.cmp-tag{position:absolute;top:14px;z-index:8;font-family:var(--m);font-size:10.5px;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;padding:6px 11px;background:rgba(18,17,15,.9);color:#fff;pointer-events:none}
+.cmp-tag.l{left:14px}
+.cmp-tag.r{right:14px;background:var(--red)}
+.cmp-hint{display:flex;align-items:center;gap:10px;margin-top:14px}
+.cmp-hint svg{width:17px;height:17px;color:var(--red);flex:none}
 
-.sp-grad{ background:linear-gradient(135deg,#7C3AED,#2563EB); padding:20px 18px; display:flex; flex-direction:column; gap:13px; align-items:flex-start; border-radius:10px; }
-.sp-solid{ background:#141414; padding:20px 18px; display:flex; flex-direction:column; gap:13px; align-items:flex-start; border-top:3px solid var(--accent); }
-.sp-h{ color:#fff; font-weight:800; font-size:16.5px; line-height:1.14; letter-spacing:-.02em; }
-.sp-solid .sp-h{ line-height:1.02; letter-spacing:-.035em; }
-.sp-btn{ display:inline-flex; align-items:center; gap:8px; padding:8px 15px; font-size:12.5px; font-weight:800; }
-.sp-btn.light{ background:#fff; color:#2563EB; border-radius:999px; }
-.sp-btn.red{ background:var(--accent); color:#fff; }
-.sp-btn.big{ padding:11px 19px; font-size:13.5px; }
-.sp-btn svg{ width:15px; height:15px; flex:none; }
-.sp-btns{ display:flex; flex-direction:column; gap:12px; align-items:flex-start; }
-.sp-note{ font-size:11px; color:#9A9A9A; line-height:1.4; }
-.sp-stats{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; text-align:center; }
-.sp-stats div{ padding:6px 2px; min-width:0; }
-.sp-stats b{ display:block; font-size:21px; font-weight:900; color:#111; letter-spacing:-.035em; }
-.sp-stats i{ display:block; font-style:normal; font-size:10.5px; color:#8A8A8A; margin-top:5px; line-height:1.3; }
-.sp-cards{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:9px; }
-.sp-cards .c{ padding:12px 13px; font-size:12.5px; font-weight:800; color:#111; min-width:0; }
-.sp-cards .c span{ display:block; font-weight:400; font-size:11px; color:#8A8A8A; margin-top:4px; line-height:1.4; }
-.sp-cards .c.bad{ background:#F4F4F4; border:1px solid #D6D6D6; border-left:4px solid #7C3AED; box-shadow:0 3px 6px rgba(0,0,0,.19); border-radius:8px; }
-.sp-cards .c.good{ background:#FAFAF8; border:1px solid #E8E8E4; }
-.sp-tit{ width:100%; }
-.ttl-bad{ display:block; font-size:19px; font-weight:800; color:#111; line-height:1; letter-spacing:0; }
-.ttl-good{ display:block; font-size:24px; font-weight:800; color:#111; line-height:.86; letter-spacing:-.032em; }
+/* мини-сайт: одна геометрия, две подачи */
+.ms{position:absolute;inset:0;display:flex;flex-direction:column;background:#fff;
+  font-family:var(--b);container-type:inline-size}
+.ms-bar{display:flex;align-items:center;gap:14px;padding:2.5% 4%;border-bottom:1px solid #E7E7E7;flex:none}
+.ms-lg{font-weight:800;font-size:2.6cqw;letter-spacing:-.03em}
+.ms-nv{display:flex;gap:2.4cqw;margin-left:auto;font-size:1.85cqw;color:#7A7A7A}
+.ms-cta{font-size:1.8cqw;font-weight:700;padding:1.1cqw 2.2cqw;color:#fff}
+.ms-hero{flex:1 1 auto;padding:3% 4%;display:flex;flex-direction:column;justify-content:center;gap:1.6cqw;min-height:0}
+.ms-eye{font-size:1.5cqw;font-weight:600}
+.ms-h{font-weight:800;font-size:4.35cqw}
+.ms-btn{align-self:flex-start;display:inline-flex;align-items:center;gap:1cqw;font-size:1.85cqw;font-weight:700;padding:1.2cqw 2.4cqw;color:#fff}
+.ms-btn svg{width:1.9cqw;height:1.9cqw}
+.ms-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.4cqw;padding:0 4% 2.8%;flex:none}
+.ms-c{padding:1.6cqw 1.8cqw;font-size:1.7cqw;font-weight:700;min-width:0}
+.ms-c span{display:block;font-weight:400;font-size:1.5cqw;color:#8C8C8C;margin-top:.5cqw;line-height:1.35}
+.ms-st{display:flex;gap:3.4cqw;padding:0 4% 2.8%;font-size:1.5cqw;color:#6E6E6E;flex:none}
+.ms-st b{font-weight:800;color:#111;font-size:2.3cqw;display:block;letter-spacing:-.03em;margin-bottom:.2cqw}
 
-/* ---------- tools ---------- */
-.tools{ display:grid; grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr); gap:clamp(24px,3.4vw,54px); align-items:center; }
-.tools-list{ display:grid; gap:9px; }
-.tool{ display:grid; grid-template-columns:30px minmax(0,1fr); gap:14px; align-items:start; border:1px solid var(--cardline); background:var(--card); padding:15px 17px; }
-.tool i{ width:30px; height:30px; background:var(--accent); color:#fff; display:grid; place-items:center; font-style:normal; font-weight:800; font-size:12px; }
-.tool b{ display:block; font-size:14.5px; font-weight:800; letter-spacing:-.015em; margin-bottom:2px; }
-.tool span{ font-size:13.3px; color:var(--muted); line-height:1.5; }
-.tools-pic{ display:grid; gap:10px; }
-.tools-pic img{ width:100%; border:1px solid var(--cardline); }
+/* мелкий контейнер (телефон): поднимаем кегли, иначе макет нечитаем */
+@container (max-width:640px){
+  .ms-bar{padding:3.4% 4.5%}
+  .ms-lg{font-size:3.6cqw}
+  .ms-nv{display:none}
+  .ms-cta{font-size:2.7cqw;padding:1.6cqw 3cqw}
+  .ms-hero{padding:4% 4.5%;gap:2.6cqw}
+  .ms-eye{font-size:2.4cqw}
+  .ms.good .ms-eye{font-size:2.4cqw}
+  .ms.bad .ms-eye{font-size:2.2cqw;letter-spacing:.3em}
+  .ms-h{font-size:6.4cqw}
+  .ms-btn{font-size:2.9cqw;padding:1.9cqw 3.4cqw}
+  .ms-btn svg{width:2.8cqw;height:2.8cqw}
+  .ms-row{padding:0 4.5% 3.4%;gap:2cqw}
+  .ms-c{padding:2.4cqw 2.4cqw;font-size:2.5cqw}
+  .ms-c span{font-size:2.1cqw}
+  .ms-st{padding:0 4.5% 3.6%;font-size:2.1cqw;gap:4.4cqw}
+  .ms-st b{font-size:3.6cqw}
+}
 
-/* ---------- price ---------- */
-.plans{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; max-width:840px; }
-.plan{ border:1px solid var(--cardline); background:var(--card); padding:28px 26px 30px; display:flex; flex-direction:column; }
-.plan.pick{ border-color:var(--accent); background:#FFF8F8; }
-.plan h3{ text-transform:uppercase; }
-.plan .cond{ font-size:12px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--dim); margin-top:10px; }
-.plan .price{ font-size:clamp(38px,4.4vw,54px); font-weight:900; letter-spacing:-.045em; line-height:1; margin:22px 0 4px; }
-.plan .price s{ font-size:19px; font-weight:400; color:var(--dim); margin-left:10px; letter-spacing:-.01em; }
-.plan ul{ list-style:none; margin:22px 0 26px; display:grid; gap:10px; }
-.plan li{ display:grid; grid-template-columns:17px minmax(0,1fr); gap:11px; font-size:14.2px; color:var(--muted); line-height:1.5; }
-.plan li svg{ width:17px; height:17px; color:var(--accent); margin-top:3px; }
-.plan .btn{ margin-top:auto; width:100%; }
+.ms.bad .ms-cta{background:#7C3AED;border-radius:99px}
+.ms.bad .ms-hero{background:linear-gradient(135deg,#7C3AED,#2563EB);color:#fff}
+.ms.bad .ms-eye{letter-spacing:.42em;text-transform:uppercase;opacity:.85;font-size:1.35cqw}
+.ms.bad .ms-h{line-height:1;letter-spacing:0}
+.ms.bad .ms-btn{background:#fff;color:#2563EB;border-radius:99px}
+.ms.bad .ms-c{background:#F4F4F4;border:1px solid #D8D8D8;border-left:.55cqw solid #7C3AED;
+  box-shadow:0 .4cqw .8cqw rgba(0,0,0,.2);border-radius:.9cqw}
+.ms.bad .ms-st b{color:#7C3AED}
 
-/* ---------- not for you ---------- */
-.nope{ border:1px solid var(--cardline); background:var(--card); padding:clamp(24px,3.2vw,40px); }
-.nope-list{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px 34px; margin-top:24px; }
-.nope-i{ display:grid; grid-template-columns:19px minmax(0,1fr); gap:13px; align-items:start; }
-.nope-i svg{ width:19px; height:19px; color:var(--dim); margin-top:2px; }
-.nope-i b{ display:block; font-size:15px; font-weight:800; margin-bottom:3px; letter-spacing:-.015em; }
-.nope-i span{ font-size:14px; color:var(--muted); line-height:1.5; }
+.ms.good .ms-cta{background:var(--red)}
+.ms.good .ms-hero{background:#12110F;color:#F2F1ED;border-top:.42cqw solid var(--red)}
+.ms.good .ms-eye{font-size:1.45cqw;color:#FF6A70;letter-spacing:.1em;text-transform:uppercase;font-weight:700}
+.ms.good .ms-h{line-height:.88;letter-spacing:-.045em;font-family:var(--d)}
+.ms.good .ms-btn{background:var(--red);color:#fff}
+.ms.good .ms-c{background:#FAFAF8;border:1px solid #E6E4DE}
+.ms.good .ms-st b{color:#111}
 
-/* ---------- faq ---------- */
-.faq{ border-top:1px solid var(--line); max-width:860px; }
-.q{ border-bottom:1px solid var(--line); }
-.q button{ width:100%; background:none; border:0; text-align:left; cursor:pointer; padding:22px 46px 22px 0; position:relative; font-size:clamp(16px,1.7vw,18.5px); font-weight:800; letter-spacing:-.02em; }
-.q button:hover{ color:var(--accent); }
-.q .ch{ position:absolute; right:2px; top:50%; transform:translateY(-50%); transition:.25s; color:var(--dim); }
-.q .ch svg{ width:18px; height:18px; display:block; }
-.q.open .ch{ transform:translateY(-50%) rotate(180deg); color:var(--accent); }
-.q .a{ max-height:0; overflow:hidden; transition:max-height .3s ease; }
-.q.open .a{ max-height:520px; }
-.q .a p{ padding:0 40px 24px 0; color:var(--muted); font-size:15px; line-height:1.6; }
+/* ============ GAME ============ */
+.game{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:clamp(20px,2.6vw,36px);align-items:start}
+.game-stage{position:relative;border:1px solid var(--ink);overflow:hidden;background:#fff}
+.game-ar{aspect-ratio:16/10;position:relative}
+.hot{position:absolute;z-index:5;border:2px dashed transparent;cursor:pointer;transition:.15s;background:transparent}
+.hot:hover{border-color:rgba(232,23,31,.6);background:rgba(232,23,31,.1)}
+.hot.got{border:2px solid var(--red);background:rgba(232,23,31,.15);cursor:default}
+.hot .pin{position:absolute;top:-11px;left:-11px;width:22px;height:22px;border-radius:50%;background:var(--red);color:#fff;
+  display:none;place-items:center;font-family:var(--m);font-size:11px;font-weight:700}
+.hot.got .pin{display:grid}
+.game-side{border:1px solid var(--line);background:#fff;padding:24px 24px 26px}
+.game-score{display:flex;align-items:baseline;gap:10px;border-bottom:1px solid var(--line);padding-bottom:16px;margin-bottom:18px}
+.game-score b{font-family:var(--d);font-size:34px;font-weight:800;letter-spacing:-.05em;line-height:1}
+.game-list{display:grid;gap:9px;list-style:none}
+.game-list li{display:grid;grid-template-columns:20px minmax(0,1fr);gap:11px;font-size:14.5px;color:var(--dim);line-height:1.45;align-items:start}
+.game-list li .bx{width:20px;height:20px;border:1px solid var(--line);display:grid;place-items:center;margin-top:1px}
+.game-list li .bx svg{width:11px;height:11px;color:#fff;opacity:0}
+.game-list li.got{color:var(--ink)}
+.game-list li.got .bx{background:var(--red);border-color:var(--red)}
+.game-list li.got .bx svg{opacity:1}
+.game-done{margin-top:20px;padding-top:18px;border-top:1px solid var(--line);display:none}
+.game-done.on{display:block}
+.game-done p{font-size:14.5px;color:var(--mut);line-height:1.55;margin-bottom:16px}
 
-/* ---------- final ---------- */
-.final{ background:#0B0B0B; color:#F1F1F1; }
-.final .in{ display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr); gap:clamp(26px,4vw,64px); align-items:center; }
-.final h2{ margin-bottom:18px; }
-.final p{ color:#B9B9B9; max-width:32em; font-weight:300; font-size:17px; }
-.final .cta{ display:flex; gap:10px; flex-wrap:wrap; margin-top:28px; }
-.final img{ width:100%; border:1px solid #242424; }
-footer{ background:#0B0B0B; color:#6E6E6E; border-top:1px solid #1D1D1D; padding:26px 0 40px; font-size:13px; }
-.foot{ display:flex; flex-wrap:wrap; gap:12px 30px; justify-content:space-between; align-items:center; }
+/* ============ SIGNS ============ */
+.signs-g{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(26px,4vw,72px);align-items:start}
+.signs-sticky{position:sticky;top:104px}
+.signs-sticky h2{font-size:clamp(22px,2.6vw,34px)}
+.signs{border-top:1px solid var(--line)}
+.sign{display:grid;grid-template-columns:52px minmax(0,1fr) auto;gap:18px;align-items:baseline;
+  padding:19px 0;border-bottom:1px solid var(--line)}
+.sign .n{font-family:var(--m);font-size:12px;color:var(--dim)}
+.sign b{font-size:17.5px;font-weight:700;letter-spacing:-.02em}
+.sign .lk{font-family:var(--m);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);white-space:nowrap}
+.sign.open .lk{color:var(--red)}
 
-/* ---------- reveal ---------- */
-.js .rv{ opacity:0; transform:translateY(16px); transition:opacity .55s ease, transform .55s ease; }
-.rv.in{ opacity:1; transform:none; }
-@media (prefers-reduced-motion:reduce){ .rv{opacity:1;transform:none;transition:none} html{scroll-behavior:auto} }
+.g3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.card{background:#fff;border:1px solid var(--line);padding:32px 30px 34px;min-width:0}
+.card .ic{width:26px;height:26px;color:var(--red);margin-bottom:22px}
+.card .ic svg{width:26px;height:26px}
+.card h3{margin-bottom:11px}
+.card p{font-size:15.5px;color:var(--mut);line-height:1.6}
 
-@media (max-width:900px){
-  .nav-links{ display:none; }
-  .facts{ grid-template-columns:repeat(2,minmax(0,1fr)); }
-  .facts div{ border-bottom:1px solid #242424; }
-  .facts div:nth-child(2){ border-right:0; }
-  .facts div:nth-child(3),.facts div:nth-child(4){ border-bottom:0; }
-  .grid3,.grid2,.shots,.mods,.specs,.plans,.nope-list,.tools,.final .in{ grid-template-columns:minmax(0,1fr); }
-  .tools-pic{ order:-1; }
+.shots{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.shot{border:1px solid var(--line);background:#fff;overflow:hidden}
+.shot img{width:100%;aspect-ratio:1100/618;object-fit:cover}
+.shot .cp{padding:14px 15px 16px}
+.shot .cp b{display:block;font-size:15px;font-weight:700;letter-spacing:-.02em}
+.shot .cp i{font-style:normal;font-family:var(--m);font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--dim)}
+
+.mods{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.mod{background:var(--paper);padding:24px 22px 26px;min-width:0}
+.mod .n{font-family:var(--m);font-size:10.5px;letter-spacing:.09em;color:var(--dim)}
+.mod h4{margin:12px 0 8px;font-size:16px}
+.mod p{font-size:14px;color:var(--mut);line-height:1.5}
+.mod.hot{background:var(--ink);color:#F2F1ED}
+.mod.hot .n{color:var(--red)}
+.mod.hot p{color:#A6A199}
+
+.files{display:grid;gap:12px}
+.file{display:grid;grid-template-columns:46px minmax(0,1fr) auto;gap:20px;align-items:center;
+  background:#fff;border:1px solid var(--line);padding:24px 26px;transition:.18s}
+a.file:hover{border-color:var(--red)}
+.file .n{width:46px;height:46px;background:var(--red);color:#fff;display:grid;place-items:center;font-family:var(--d);font-weight:700;font-size:14px}
+.file.lock .n{background:var(--paper-2);color:var(--dim)}
+.file .n svg{width:19px;height:19px}
+.file .t{font-size:15px;line-height:1.55;color:var(--mut);min-width:0}
+.file .t b{display:block;font-size:17.5px;font-weight:700;color:var(--ink);letter-spacing:-.025em;margin-bottom:5px}
+.file .act{display:flex;align-items:center;gap:9px;font-family:var(--m);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);white-space:nowrap}
+a.file:hover .act{color:var(--red)}
+.file .act svg{width:18px;height:18px}
+
+.tools{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.8fr);gap:clamp(26px,4vw,64px);align-items:start}
+.tool{display:grid;grid-template-columns:44px minmax(0,1fr);gap:18px;align-items:start;padding:20px 0;border-bottom:1px solid var(--line)}
+.tool:first-of-type{border-top:1px solid var(--line)}
+.tool .n{width:44px;height:44px;background:#fff;border:1px solid var(--line);color:var(--red);display:grid;place-items:center;font-family:var(--d);font-weight:700;font-size:13px}
+.tool b{display:block;font-size:16.5px;font-weight:700;letter-spacing:-.02em;margin-bottom:4px}
+.tool span{font-size:15px;color:var(--mut);line-height:1.55}
+.tools-pic{display:grid;gap:12px}
+.tools-pic img{width:100%;border:1px solid var(--line)}
+
+.plans{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;max-width:900px}
+.plan{background:#fff;border:1px solid var(--line);padding:36px 34px 38px;display:flex;flex-direction:column}
+.plan.pick{border:1.5px solid var(--red)}
+.plan h3{margin-bottom:10px}
+.plan .cond{font-family:var(--m);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}
+.plan .pr{font-family:var(--d);font-size:clamp(33px,4vw,48px);font-weight:800;letter-spacing:-.055em;line-height:1;margin:26px 0 0}
+.plan ul{list-style:none;margin:28px 0 32px;display:grid;gap:13px}
+.plan li{display:grid;grid-template-columns:19px minmax(0,1fr);gap:12px;font-size:15.5px;color:var(--mut);line-height:1.5}
+.plan li svg{width:19px;height:19px;color:var(--red);margin-top:2px}
+.plan .btn{margin-top:auto;width:100%}
+
+.nope{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 52px}
+.nope-i{display:grid;grid-template-columns:22px minmax(0,1fr);gap:15px;align-items:start}
+.nope-i svg{width:22px;height:22px;color:var(--dim);margin-top:2px}
+.nope-i b{display:block;font-size:16.5px;font-weight:700;margin-bottom:5px;letter-spacing:-.02em}
+.nope-i span{font-size:15px;color:var(--mut);line-height:1.55}
+
+.faq{max-width:900px;border-top:1px solid var(--line)}
+.q{border-bottom:1px solid var(--line)}
+.q button{width:100%;text-align:left;cursor:pointer;padding:26px 50px 26px 0;position:relative;
+  font-family:var(--b);font-size:clamp(16.5px,1.6vw,19px);font-weight:700;letter-spacing:-.025em;line-height:1.35}
+.q button:hover{color:var(--red)}
+.q .ch{position:absolute;right:0;top:50%;transform:translateY(-50%);transition:.25s;color:var(--dim)}
+.q .ch svg{width:19px;height:19px;display:block}
+.q.open .ch{transform:translateY(-50%) rotate(180deg);color:var(--red)}
+.q .a{max-height:0;overflow:hidden;transition:max-height .3s ease}
+.q.open .a{max-height:560px}
+.q .a p{padding:0 46px 28px 0;color:var(--mut);font-size:16px;line-height:1.65}
+
+.stamp{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,70px);align-items:center}
+.stamp-box{border:1px solid #33312D;padding:30px 32px}
+.stamp-row{display:flex;justify-content:space-between;gap:14px;padding:11px 0;border-bottom:1px solid #26241F;font-size:14.5px}
+.stamp-row:last-child{border-bottom:0}
+.stamp-row span{color:#8B867D}
+.stamp-row b{font-family:var(--m);font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;color:#5FD08A}
+
+.final-g{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(28px,4vw,72px);align-items:center}
+.final-g img{width:100%;border:1px solid #33312D}
+.final-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+footer{background:var(--ink);color:#75716A;border-top:1px solid #26241F;padding:30px 0 44px;font-size:14px}
+.foot{display:flex;flex-wrap:wrap;gap:14px 34px;justify-content:space-between;align-items:center}
+
+.js .rv{opacity:0;transform:translateY(20px);transition:opacity .65s cubic-bezier(.2,.7,.3,1),transform .65s cubic-bezier(.2,.7,.3,1)}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+
+@media (max-width:1080px){
+  .shots,.mods{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .game,.signs-g{grid-template-columns:minmax(0,1fr)}
+  .signs-sticky{position:static}
+}
+@media (max-width:920px){
+  .nav-l{display:none}
+  .hero-g,.g3,.plans,.nope,.tools,.final-g,.stamp{grid-template-columns:minmax(0,1fr)}
+  .facts{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .facts>div{padding-right:16px}
+  .facts>div:nth-child(2){border-right:0}
+  .facts>div:nth-child(1),.facts>div:nth-child(2){border-bottom:1px solid var(--line)}
+  .tools-pic{order:-1}
+  .cmp-stage,.game-ar{aspect-ratio:4/3}
 }
 @media (max-width:560px){
-  .facts{ grid-template-columns:minmax(0,1fr); }
-  .facts div{ border-right:0; }
-  .sp-cards,.sp-stats{ grid-template-columns:minmax(0,1fr); }
+  .facts,.shots,.mods{grid-template-columns:minmax(0,1fr)}
+  .facts>div{border-right:0;border-bottom:1px solid var(--line)}
+  .facts>div:last-child{border-bottom:0}
+  .cmp-stage,.game-ar{aspect-ratio:1/1}
+  .file{grid-template-columns:46px minmax(0,1fr)}
+  .file .act{display:none}
+  .sign{grid-template-columns:38px minmax(0,1fr);gap:12px}
+  .sign .lk{display:none}
 }
 </style>
 </head>
@@ -262,11 +351,14 @@ footer{ background:#0B0B0B; color:#6E6E6E; border-top:1px solid #1D1D1D; padding
 
 <header class="nav">
   <div class="wrap nav-in">
-    <a href="#top" class="logo"><i>И</i><b>Сайты через ИИ<span>практический курс</span></b></a>
-    <nav class="nav-links">
-      <a href="#works">Работы</a>
+    <a href="#top" class="brand">
+      <svg class="mk" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" fill="#12110F"></rect><rect x="4" y="4" width="11" height="24" fill="#E8171F"></rect><rect x="18" y="4" width="10" height="10" fill="#F2F1ED"></rect></svg>
+      <span><b>Сайты через ИИ</b><i>практический курс</i></span>
+    </a>
+    <nav class="nav-l">
+      <a href="#compare">Сравнить</a>
+      <a href="#game">Игра</a>
       <a href="#program">Программа</a>
-      <a href="#files">Файлы</a>
       <a href="#price">Цена</a>
     </nav>
     <a href="#price" class="btn btn-red btn-sm">Купить</a>
@@ -276,187 +368,237 @@ footer{ background:#0B0B0B; color:#6E6E6E; border-top:1px solid #1D1D1D; padding
 <main id="top">
 
 <section class="hero">
-  <video class="hero-bg" src="img/hero-wide.mp4" autoplay muted loop playsinline poster="img/hero-wide.jpg"></video>
-  <div class="hero-scrim"></div>
   <div class="wrap">
-    <div class="hero-in">
-      <div class="hero-tags">
-        <span class="tag solid">Практический курс</span>
-        <span class="tag">8 модулей</span>
-        <span class="tag">Без кода</span>
+    <div class="hero-g">
+      <div>
+        <span class="mono">Курс о вёрстке через нейросеть</span>
+        <h1>Сайты через ИИ,<br>которые не палятся<br><em>как сделанные ИИ</em></h1>
+        <p class="lede">Нейросеть собирает сайты по одной и той же дизайн-системе. Клиент считывает это за долю секунды и платит как за шаблон. Курс о том, что нужно вычистить руками, чтобы работа стоила денег.</p>
+        <div class="hero-cta">
+          <a href="#price" class="btn btn-red">Купить курс
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13"></path><path d="M12.5 6 19 12l-6.5 6"></path></svg>
+          </a>
+          <a href="demo/" class="btn btn-ln">Открыть демо</a>
+        </div>
+        <p class="hero-note">Демо без пароля и оплаты: витрина работ и первый модуль целиком.</p>
       </div>
-      <h1>Сайты через ИИ,<br>которые не палятся<br><span class="r">как сделанные ИИ</span></h1>
-      <p class="lede">Нейросеть собирает сайты по одному шаблону — и это видно с первого экрана. Курс о том, как чистить за ней руками, чтобы работа выглядела дизайнерской и стоила соответственно.</p>
-      <div class="hero-cta">
-        <a href="#price" class="btn btn-red">Купить курс
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h13"></path><path d="M12.5 6 19 12l-6.5 6"></path></svg>
-        </a>
-        <a href="demo/" class="btn btn-line">Открыть демо-версию</a>
-      </div>
-      <p class="hero-note">Демо открыто без пароля и без оплаты: витрина работ и первый модуль целиком.</p>
+      <figure class="hero-vid rv">
+        <video src="img/hero-wide.mp4" autoplay muted loop playsinline poster="img/hero-wide.jpg"></video>
+        <figcaption>Восемь модулей / от нуля до оплаченного заказа</figcaption>
+      </figure>
     </div>
     <div class="facts">
       <div><b>8</b><i>модулей с заданиями</i></div>
-      <div><b class="y">5</b><i>рабочих инструментов прямо в курсе</i></div>
+      <div><b class="r">5</b><i>рабочих инструментов внутри курса</i></div>
       <div><b>3</b><i>файла правил для твоей нейросети</i></div>
       <div><b>0</b><i>строк кода, которые пишешь ты</i></div>
     </div>
   </div>
 </section>
 
+<section class="sec" id="compare">
+  <div class="wrap">
+    <div class="rule rv"><span class="mono">01 / Разница</span><span class="ln"></span><span class="mono">потяни ползунок</span></div>
+    <div class="head head-sp rv" style="margin-bottom:clamp(26px,3.4vw,44px)">
+      <div class="t"><h2>Один и тот же сайт.<br>Слева ИИ, справа руки.</h2></div>
+      <p>Ни одно слово в тексте не поменялось. Поменялись только те вещи, из-за которых первый вариант выглядит на пять тысяч, а второй — на пятьдесят.</p>
+    </div>
+
+    <div class="cmp" id="cmp">
+      <div class="cmp-stage">
+        <div class="cmp-l">
+          <div class="ms good">
+            <div class="ms-bar"><span class="ms-lg">СтеклА</span><span class="ms-nv"><span>Работы</span><span>Цены</span><span>Контакты</span></span><span class="ms-cta">Замер</span></div>
+            <div class="ms-hero">
+              <span class="ms-eye">Каркасы и перегородки</span>
+              <span class="ms-h">Стеклянные<br>конструкции<br>под ключ</span>
+              <span class="ms-btn">Рассчитать проект<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13"></path><path d="M12.5 6 19 12l-6.5 6"></path></svg></span>
+            </div>
+            <div class="ms-row">
+              <span class="ms-c">Замер<span>Приедем и снимем размеры</span></span>
+              <span class="ms-c">Монтаж<span>Своя бригада, без подрядчиков</span></span>
+              <span class="ms-c">Гарантия<span>Два года по договору</span></span>
+            </div>
+            <div class="ms-st"><span><b>2017</b>год основания</span><span><b>3 дня</b>срок замера</span><span><b>2 года</b>гарантия</span></div>
+          </div>
+        </div>
+        <div class="cmp-l cmp-top">
+          <div class="ms bad">
+            <div class="ms-bar"><span class="ms-lg">СтеклА</span><span class="ms-nv"><span>Работы</span><span>Цены</span><span>Контакты</span></span><span class="ms-cta">Замер</span></div>
+            <div class="ms-hero">
+              <span class="ms-eye">— наши услуги —</span>
+              <span class="ms-h">Изготовим и смонтируем<br>стеклянные конструкции<br>под ключ</span>
+              <span class="ms-btn">Оставить заявку →</span>
+            </div>
+            <div class="ms-row">
+              <span class="ms-c">Замер<span>Приедем и снимем размеры</span></span>
+              <span class="ms-c">Монтаж<span>Своя бригада, без подрядчиков</span></span>
+              <span class="ms-c">Гарантия<span>Два года по договору</span></span>
+            </div>
+            <div class="ms-st"><span><b>24/7</b>поддержка</span><span><b>4.9</b>рейтинг</span><span><b>1000+</b>клиентов</span></div>
+          </div>
+        </div>
+        <span class="cmp-tag l">Нейросеть</span>
+        <span class="cmp-tag r">После чистки</span>
+        <div class="cmp-hd"></div>
+        <button class="cmp-kn" id="cmpKn" type="button" role="slider" aria-label="Сравнение до и после" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6 3.5 12 9 18"></path><path d="M15 6l5.5 6L15 18"></path></svg>
+        </button>
+      </div>
+    </div>
+    <div class="cmp-hint rv">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6 3.5 12 9 18"></path><path d="M15 6l5.5 6L15 18"></path></svg>
+      <span class="note">Тяни ползунок или жми стрелки на клавиатуре. Разбор каждого отличия — в восьмом модуле.</span>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="game" style="background:var(--paper-2)">
+  <div class="wrap">
+    <div class="rule rv"><span class="mono">02 / Проверка глаза</span><span class="ln"></span><span class="mono">спрятано 4 признака</span></div>
+    <div class="head head-sp rv" style="margin-bottom:clamp(26px,3.4vw,44px)">
+      <div class="t"><h2>Найди слоп</h2></div>
+      <p>На этом экране четыре признака нейросети. Тыкай туда, где сайт себя выдаёт. Найдёшь все четыре меньше чем за минуту — глаз у тебя уже поставлен.</p>
+    </div>
+    <div class="game">
+      <div class="game-stage">
+        <div class="game-ar" id="gameAr">
+          <div class="ms bad">
+            <div class="ms-bar"><span class="ms-lg">Тёплый угол</span><span class="ms-nv"><span>Меню</span><span>О нас</span><span>Контакты</span></span><span class="ms-cta">Забронировать</span></div>
+            <div class="ms-hero">
+              <span class="ms-eye">— наша кофейня —</span>
+              <span class="ms-h">Кофе, который согреет<br>любой ваш день<br>в центре города</span>
+              <span class="ms-btn">Забронировать стол →</span>
+            </div>
+            <div class="ms-row">
+              <span class="ms-c">Обжарка<span>Своя, каждую неделю</span></span>
+              <span class="ms-c">Завтраки<span>С восьми утра</span></span>
+              <span class="ms-c">Веранда<span>Двадцать мест</span></span>
+            </div>
+            <div class="ms-st"><span><b>24/7</b>работаем</span><span><b>4.9</b>рейтинг</span><span><b>1000+</b>гостей в месяц</span></div>
+          </div>
+          <button class="hot" type="button" data-k="grad" style="left:38%;top:20%;width:58%;height:42%" aria-label="Найти признак"><span class="pin"></span></button>
+          <button class="hot" type="button" data-k="eye" style="left:4%;top:22%;width:32%;height:9%" aria-label="Найти признак"><span class="pin"></span></button>
+          <button class="hot" type="button" data-k="arrow" style="left:4%;top:49%;width:33%;height:12%" aria-label="Найти признак"><span class="pin"></span></button>
+          <button class="hot" type="button" data-k="stats" style="left:3%;top:83%;width:62%;height:15%" aria-label="Найти признак"><span class="pin"></span></button>
+        </div>
+      </div>
+      <div class="game-side rv">
+        <div class="game-score"><b id="gScore">0</b><span class="mono">из 4 найдено</span></div>
+        <ul class="game-list" id="gList">
+          <li data-k="grad"><span class="bx"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.4 6.4 11.3 12.5 4.8"></path></svg></span><span data-t>Ещё не найдено</span></li>
+          <li data-k="eye"><span class="bx"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.4 6.4 11.3 12.5 4.8"></path></svg></span><span data-t>Ещё не найдено</span></li>
+          <li data-k="arrow"><span class="bx"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.4 6.4 11.3 12.5 4.8"></path></svg></span><span data-t>Ещё не найдено</span></li>
+          <li data-k="stats"><span class="bx"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.4 6.4 11.3 12.5 4.8"></path></svg></span><span data-t>Ещё не найдено</span></li>
+        </ul>
+        <div class="game-done" id="gDone">
+          <p>Четыре из четырёх. Это признаки, которые видно сразу. В курсе разобраны все семь — включая те, что замечают только после того, как их покажут.</p>
+          <a href="#price" class="btn btn-red" style="width:100%">Забрать курс</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="sec">
   <div class="wrap">
-    <div class="head rv">
-      <div class="t"><span class="lbl">В чём проблема</span><h2>Нейронка собирает<br><span class="thin">хорошо. И одинаково.</span></h2></div>
-      <p>Она собирает быстро и аккуратно. Просто одинаково — у неё одна базовая дизайн-система на все ниши, и она лепит её из раза в раз. Клиент считывает это за долю секунды и платит как за шаблон.</p>
-    </div>
-    <div class="grid3">
-      <div class="box rv">
-        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"></circle><path d="M12 7.5v5l3 2"></path></svg></span>
-        <h4>50 миллисекунд</h4>
-        <p>Столько человек решает, остаться на сайте или закрыть. Это быстрее, чем он дочитает заголовок. Если первый экран собран утилитарно — предложение уже никто не увидит.</p>
+    <div class="rule rv"><span class="mono">03 / Модуль 08</span><span class="ln"></span><span class="mono">главный модуль курса</span></div>
+    <div class="signs-g">
+      <div class="signs-sticky rv">
+        <h2>Семь признаков,<br>по которым сайт<br>палится за секунду</h2>
+        <p class="note" style="margin-top:20px;max-width:26em">Список открытый — его знает любой практикующий дизайнер. Ценность не в названиях, а в том, что с каждым делать: в курсе на каждый признак разбор, живой пример и правка кодом.</p>
+        <a href="#price" class="btn btn-ln" style="margin-top:26px">Открыть разбор</a>
       </div>
-      <div class="box rv">
-        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 6h18M3 12h18M3 18h11"></path></svg></span>
-        <h4>Семь признаков</h4>
-        <p>Композиция первого экрана, сгенерированные люди, плашки со всем сразу, шрифты по умолчанию, стрелки с клавиатуры, точки-разделители, враньё в цифрах. Их видно всем, включая заказчика.</p>
-      </div>
-      <div class="box rv">
-        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20V8.5L12 4l8 4.5V20"></path><path d="M9.5 20v-6h5v6"></path></svg></span>
-        <h4>Нейронка не проверяет себя</h4>
-        <p>Она выдаёт то, что чаще встречалось в обучении, и на этом останавливается. Вычитка, композиция и характер — это то, что остаётся человеку. Курс ровно про это.</p>
+      <div class="signs rv">
+        <div class="sign"><span class="n">01</span><b>Композиция первого экрана</b><span class="lk">разбор внутри</span></div>
+        <div class="sign"><span class="n">02</span><b>Сгенерированные люди на фото</b><span class="lk">разбор внутри</span></div>
+        <div class="sign"><span class="n">03</span><b>Обводка, заливка и тень сразу</b><span class="lk">разбор внутри</span></div>
+        <div class="sign open"><span class="n">04</span><b>Типографика по умолчанию</b><span class="lk">видно выше</span></div>
+        <div class="sign open"><span class="n">05</span><b>Стрелки прямо с клавиатуры</b><span class="lk">видно выше</span></div>
+        <div class="sign"><span class="n">06</span><b>Точки-разделители между словами</b><span class="lk">разбор внутри</span></div>
+        <div class="sign open"><span class="n">07</span><b>Враньё в цифрах и тексте</b><span class="lk">видно выше</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="sec" id="try" style="background:var(--card)">
+<section class="sec" style="background:var(--paper-2)">
   <div class="wrap">
-    <div class="head rv">
-      <div class="t"><span class="lbl">Попробуй прямо здесь</span><h2>Четыре примера<br><span class="thin">из модуля про нейрослоп</span></h2></div>
-      <p>Это кусок курса, вынесенный на страницу. Слева живая вёрстка со слопом, переключатель — та же вёрстка, вычищенная. Нажми и посмотри, что именно меняется.</p>
-    </div>
-    <div class="stand rv" id="stand">
-      <div class="stand-top">
-        <span class="lbl">Все примеры сразу</span>
-        <div class="sw">
-          <button type="button" class="on" data-all="bad">Слоп</button>
-          <button type="button" data-all="good">Как надо</button>
-        </div>
-      </div>
-      <div class="specs">
-        <div class="spec">
-          <div class="spec-h"><b>Фиолетово-синий градиент</b><button class="spec-t" type="button">Как надо</button></div>
-          <div class="spec-view">
-            <div class="v v-bad"><div class="sp-grad"><span class="sp-h">Цифровые решения<br>для вашего бизнеса</span><span class="sp-btn light">Оставить заявку</span></div></div>
-            <div class="v v-good"><div class="sp-solid"><span class="sp-h">Каркасы из стекла<br>для торговых залов</span><span class="sp-btn red">Рассчитать проект</span></div></div>
-          </div>
-          <p class="spec-p">Самая заезженная заливка первого экрана. И текст ни о чём: «цифровые решения» подходят вообще любой компании.</p>
-        </div>
-        <div class="spec">
-          <div class="spec-h"><b>Выдуманная статистика</b><button class="spec-t" type="button">Как надо</button></div>
-          <div class="spec-view">
-            <div class="v v-bad"><div class="sp-stats"><div><b>24/7</b><i>поддержка</i></div><div><b>4.9</b><i>рейтинг</i></div><div><b>1000+</b><i>клиентов</i></div></div></div>
-            <div class="v v-good"><div class="sp-stats"><div><b>2017</b><i>год основания</i></div><div><b>2 года</b><i>гарантия по договору</i></div><div><b>3 дня</b><i>срок замера</i></div></div></div>
-          </div>
-          <p class="spec-p">Круглые цифры без источника читаются как враньё. Ставь то, что можно проверить.</p>
-        </div>
-        <div class="spec">
-          <div class="spec-h"><b>Обводка, заливка и тень</b><button class="spec-t" type="button">Как надо</button></div>
-          <div class="spec-view">
-            <div class="v v-bad"><div class="sp-cards"><div class="c bad">Замер<span>Приедем и снимем размеры</span></div><div class="c bad">Монтаж<span>Своя бригада</span></div></div></div>
-            <div class="v v-good"><div class="sp-cards"><div class="c good">Замер<span>Приедем и снимем размеры</span></div><div class="c good">Монтаж<span>Своя бригада</span></div></div></div>
-          </div>
-          <p class="spec-p">Четыре способа сказать «это отдельный блок» вместо одного. Справа — тонкая линия на спокойной подложке.</p>
-        </div>
-        <div class="spec">
-          <div class="spec-h"><b>Рваный заголовок</b><button class="spec-t" type="button">Как надо</button></div>
-          <div class="spec-view">
-            <div class="v v-bad"><div class="sp-tit"><span class="ttl-bad">Изготовим и смонтируем<br>стеклянные конструкции<br>под ключ</span></div></div>
-            <div class="v v-good"><div class="sp-tit"><span class="ttl-good">Стеклянные<br>конструкции<br>под ключ</span></div></div>
-          </div>
-          <p class="spec-p">Строки разной длины и межстрочка сто процентов. Справа заголовок собран прямоугольником, межстрочка 86%.</p>
-        </div>
-      </div>
-    </div>
-    <p class="spec-p rv" style="margin-top:16px">В курсе таких примеров восемь, плюс разбор семи главных признаков — тех, что видно ещё до того, как человек начнёт читать.</p>
-  </div>
-</section>
-
-<section class="sec" id="works">
-  <div class="wrap">
-    <div class="head rv">
-      <div class="t"><span class="lbl">Витрина</span><h2>Что получается<br><span class="thin">на выходе</span></h2></div>
-      <p>Четыре сайта в разных нишах, собранные по методу из курса. Внутри курса они живые: их можно прокрутить целиком и посмотреть, как устроен каждый блок.</p>
+    <div class="rule rv"><span class="mono">04 / Витрина</span><span class="ln"></span><span class="mono">внутри курса прокручиваются целиком</span></div>
+    <div class="head head-sp rv" style="margin-bottom:clamp(26px,3.4vw,44px)">
+      <div class="t"><h2>Что получается на выходе</h2></div>
+      <p>Четыре сайта в разных нишах, собранные по методу из курса. Внутри они живые: видно устройство каждого блока.</p>
     </div>
     <div class="shots">
-      <div class="shot rv"><img src="img/site-cafe.jpg" alt="Сайт спешелти-кофейни" loading="lazy"><div class="cap"><b>Тёплый угол</b><span>кофейня</span></div></div>
-      <div class="shot rv"><img src="img/site-barber.jpg" alt="Сайт барбершопа" loading="lazy"><div class="cap"><b>Барбершоп</b><span>запись на стрижку</span></div></div>
-      <div class="shot rv"><img src="img/site-house.jpg" alt="Сайт строительной компании" loading="lazy"><div class="cap"><b>Дома под ключ</b><span>строительство</span></div></div>
-      <div class="shot rv"><img src="img/site-jewelry.jpg" alt="Сайт ювелирной мастерской" loading="lazy"><div class="cap"><b>Мастерская</b><span>украшения</span></div></div>
+      <div class="shot rv"><img src="img/site-cafe.jpg" alt="Сайт спешелти-кофейни" loading="lazy"><div class="cp"><b>Тёплый угол</b><i>кофейня</i></div></div>
+      <div class="shot rv"><img src="img/site-barber.jpg" alt="Сайт барбершопа" loading="lazy"><div class="cp"><b>Барбершоп</b><i>запись на стрижку</i></div></div>
+      <div class="shot rv"><img src="img/site-house.jpg" alt="Сайт строительной компании" loading="lazy"><div class="cp"><b>Дома под ключ</b><i>строительство</i></div></div>
+      <div class="shot rv"><img src="img/site-jewelry.jpg" alt="Сайт ювелирной мастерской" loading="lazy"><div class="cp"><b>Мастерская</b><i>украшения</i></div></div>
     </div>
   </div>
 </section>
 
-<section class="sec" id="program" style="background:var(--card)">
+<section class="sec" id="program">
   <div class="wrap">
-    <div class="head rv">
-      <div class="t"><span class="lbl">Программа</span><h2>Восемь модулей<br><span class="thin">от нуля до оплаченного заказа</span></h2></div>
-      <p>После каждого модуля задание. Присылаешь работу — разбираем, что поправить. Восемь заданий складываются в портфолио, с которым уже можно идти к заказчику.</p>
+    <div class="rule rv"><span class="mono">05 / Программа</span><span class="ln"></span><span class="mono">8 модулей, 8 заданий</span></div>
+    <div class="head head-sp rv" style="margin-bottom:clamp(26px,3.4vw,44px)">
+      <div class="t"><h2>От нуля до первого<br>оплаченного заказа</h2></div>
+      <p>После каждого модуля задание. Присылаешь работу — разбираем, что поправить. Восемь заданий складываются в портфолио.</p>
     </div>
-    <div class="mods rv">
-      <div class="mod"><div class="n">Модуль 01</div><h4>Как ИИ делает сайты</h4><p>Что нейросеть умеет на самом деле, чем отличается код от конструктора и когда что выбирать.</p></div>
-      <div class="mod"><div class="n">Модуль 02</div><h4>Как ставить задачу</h4><p>Структура промпта из пяти частей и приёмы, которые поднимают качество в разы. Плюс конструктор промптов под любой заказ.</p></div>
-      <div class="mod"><div class="n">Модуль 03</div><h4>Правки и адаптив</h4><p>Как править пачкой вместо бесконечной переписки, словарь формулировок и починка мобильной версии.</p></div>
-      <div class="mod"><div class="n">Модуль 04</div><h4>Картинки и фото</h4><p>Где легально брать, как готовить, чтобы сайт не тормозил, и что делать, когда фото у клиента нет.</p></div>
-      <div class="mod"><div class="n">Модуль 05</div><h4>Публикация</h4><p>Выложить сайт за две минуты без программ, разобраться с доменом и заставить форму реально слать заявки.</p></div>
-      <div class="mod"><div class="n">Модуль 06</div><h4>Тильда через ИИ</h4><p>Когда нужен конструктор, какой тариф и кто его платит, где ИИ снимает самую нудную часть работы.</p></div>
-      <div class="mod"><div class="n">Модуль 07</div><h4>Реальный заказ</h4><p>Что выяснить до того, как назвать цену. Калькулятор оценки, границы правок и спокойная сдача.</p></div>
-      <div class="mod hot"><div class="n">Модуль 08</div><h4>Убить нейрослоп</h4><p>Семь признаков, по которым сайт палится, стенд с живыми примерами и файлы правил для твоей нейросети. Главный модуль курса.</p></div>
+    <div class="mods">
+      <div class="mod rv"><div class="n">01</div><h4>Как ИИ делает сайты</h4><p>Что нейросеть умеет на самом деле и когда выбирать код, а когда конструктор.</p></div>
+      <div class="mod rv"><div class="n">02</div><h4>Как ставить задачу</h4><p>Структура промпта из пяти частей и конструктор промптов под любой заказ.</p></div>
+      <div class="mod rv"><div class="n">03</div><h4>Правки и адаптив</h4><p>Править пачкой вместо переписки, словарь формулировок, починка мобильной.</p></div>
+      <div class="mod rv"><div class="n">04</div><h4>Картинки и фото</h4><p>Где легально брать, как готовить и что делать, когда фото у клиента нет.</p></div>
+      <div class="mod rv"><div class="n">05</div><h4>Публикация</h4><p>Выложить за две минуты, разобраться с доменом, заставить форму слать заявки.</p></div>
+      <div class="mod rv"><div class="n">06</div><h4>Тильда через ИИ</h4><p>Когда нужен конструктор, какой тариф и кто его платит.</p></div>
+      <div class="mod rv"><div class="n">07</div><h4>Реальный заказ</h4><p>Что выяснить до цены, калькулятор оценки, границы правок.</p></div>
+      <div class="mod hot rv"><div class="n">08</div><h4>Убить нейрослоп</h4><p>Семь признаков, стенд с живыми примерами и файлы правил. Главный модуль.</p></div>
     </div>
   </div>
 </section>
 
-<section class="sec" id="files">
+<section class="sec" style="background:var(--paper-2)">
   <div class="wrap">
-    <div class="head rv">
-      <div class="t"><span class="lbl">Инструменты, а не теория</span><h2>Файлы, которые<br><span class="thin">кидаешь своей нейросети</span></h2></div>
-      <p>Это не конспект и не памятка для чтения. Это рабочие файлы: прикрепляешь к чату — и нейросеть начинает собирать по правилам, а не по своим привычкам. В Cursor или Claude Code кладёшь в папку проекта, и они применяются сами.</p>
+    <div class="rule rv"><span class="mono">06 / Инструменты, а не теория</span><span class="ln"></span><span class="mono">один файл открыт</span></div>
+    <div class="head head-sp rv" style="margin-bottom:clamp(26px,3.4vw,44px)">
+      <div class="t"><h2>Файлы, которые кидаешь<br>своей нейросети</h2></div>
+      <p>Не конспект. Прикрепляешь файл к чату — и нейросеть собирает по правилам. В Cursor или Claude Code кладёшь в папку проекта, применяются сами.</p>
     </div>
-    <div class="files rv">
-      <a class="file" href="files/pravila-bez-slopa.md" download>
-        <i>01</i>
-        <span class="t"><b>Правила: сайт без ИИ-слопа</b>Инструкция для нейросети на 150 строк: что запрещено, что обязательно, где обычно ломается вёрстка и как проверить себя перед сдачей.</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v12"></path><path d="M7.5 10.5 12 15l4.5-4.5"></path><path d="M4 18.5v1.5h16v-1.5"></path></svg>
+    <div class="files">
+      <a class="file rv" href="files/chek-list-7-priznakov.md" download>
+        <span class="n">01</span>
+        <span class="t"><b>Чек-лист прогона по 7 признакам</b>Открываешь новый чат, кидаешь этот файл и код сайта — нейросеть находит слоп и выдаёт правки. Работает и без курса.</span>
+        <span class="act">Скачать
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"></path><path d="M7.5 10.5 12 15l4.5-4.5"></path><path d="M4 18.5v1.5h16v-1.5"></path></svg>
+        </span>
       </a>
-      <a class="file" href="files/chek-list-7-priznakov.md" download>
-        <i>02</i>
-        <span class="t"><b>Чек-лист прогона по 7 признакам</b>Открываешь новый чат, кидаешь этот файл и код сайта — нейросеть находит слоп и выдаёт конкретные правки.</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v12"></path><path d="M7.5 10.5 12 15l4.5-4.5"></path><path d="M4 18.5v1.5h16v-1.5"></path></svg>
-      </a>
-      <a class="file" href="files/promt-na-novyy-sayt.md" download>
-        <i>03</i>
+      <div class="file lock rv">
+        <span class="n"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="10.5" width="15" height="10" rx="1.6"></rect><path d="M8.2 10.5V7.9a3.8 3.8 0 0 1 7.6 0v2.6"></path></svg></span>
+        <span class="t"><b>Правила: сайт без ИИ-слопа</b>Инструкция для нейросети на 150 строк: жёсткие запреты, обязательные требования, где ломается вёрстка, самопроверка перед сдачей.</span>
+        <span class="act">В курсе</span>
+      </div>
+      <div class="file lock rv">
+        <span class="n"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="10.5" width="15" height="10" rx="1.6"></rect><path d="M8.2 10.5V7.9a3.8 3.8 0 0 1 7.6 0v2.6"></path></svg></span>
         <span class="t"><b>Заготовка промпта на новый сайт</b>Шаблон задачи с полями плюс приёмы правок, которые экономят круги переписки с моделью.</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v12"></path><path d="M7.5 10.5 12 15l4.5-4.5"></path><path d="M4 18.5v1.5h16v-1.5"></path></svg>
-      </a>
+        <span class="act">В курсе</span>
+      </div>
     </div>
-    <p class="spec-p rv" style="margin-top:18px">Второй файл забирай бесплатно прямо сейчас — он работает и без курса. Скачай, прогони свой сайт и посмотри, сколько признаков найдётся.</p>
+    <p class="note rv" style="margin-top:20px">Первый файл бесплатный и без условий. Скачай, прогони свой сайт и посмотри, сколько признаков найдётся.</p>
   </div>
 </section>
 
-<section class="sec" style="background:var(--card)">
+<section class="sec">
   <div class="wrap">
-    <div class="head rv">
-      <div class="t"><span class="lbl">Внутри курса</span><h2>Пять инструментов,<br><span class="thin">которые работают в браузере</span></h2></div>
-      <p>Не видео и не текст, который надо переписывать в блокнот. Открыл курс — пользуешься прямо на странице, хоть с телефона на объекте.</p>
-    </div>
+    <div class="rule rv"><span class="mono">07 / Внутри курса</span><span class="ln"></span><span class="mono">работает в браузере</span></div>
     <div class="tools">
-      <div class="tools-list rv">
-        <div class="tool"><i>01</i><div><b>Конструктор промптов</b><span>Выбираешь нишу, тип сайта и блоки — получаешь готовую задачу для нейросети, которую остаётся скопировать.</span></div></div>
-        <div class="tool"><i>02</i><div><b>Песочница правок</b><span>Тренажёр формулировок: пробуешь сказать, что не нравится, и сразу видишь, что получится.</span></div></div>
-        <div class="tool"><i>03</i><div><b>Чек-лист приёмки</b><span>Восемь пунктов перед сдачей клиенту: ссылки, форма, телефон, тексты, вес картинок.</span></div></div>
-        <div class="tool"><i>04</i><div><b>Чек-лист анти-слопа</b><span>Двенадцать пунктов из восьмого модуля. Прогоняешь сайт и видишь, где он ещё палится.</span></div></div>
-        <div class="tool"><i>05</i><div><b>Калькулятор оценки заказа</b><span>Тип сайта, каталог, контент, сроки — на выходе разумная вилка цены для частного исполнителя.</span></div></div>
+      <div class="rv">
+        <h2 style="margin-bottom:26px">Пять инструментов,<br>а не пять часов видео</h2>
+        <div class="tool"><span class="n">01</span><div><b>Конструктор промптов</b><span>Выбираешь нишу, тип сайта и блоки — получаешь готовую задачу, остаётся скопировать.</span></div></div>
+        <div class="tool"><span class="n">02</span><div><b>Песочница правок</b><span>Тренажёр формулировок: пробуешь сказать, что не нравится, и сразу видишь результат.</span></div></div>
+        <div class="tool"><span class="n">03</span><div><b>Чек-лист приёмки</b><span>Восемь пунктов перед сдачей клиенту: ссылки, форма, телефон, тексты, вес картинок.</span></div></div>
+        <div class="tool"><span class="n">04</span><div><b>Чек-лист анти-слопа</b><span>Двенадцать пунктов из восьмого модуля. Прогоняешь сайт и видишь, где он палится.</span></div></div>
+        <div class="tool"><span class="n">05</span><div><b>Калькулятор оценки заказа</b><span>Тип сайта, каталог, контент, сроки — на выходе разумная вилка цены.</span></div></div>
       </div>
       <div class="tools-pic rv">
         <img src="img/shot-prompt.jpg" alt="Конструктор промптов в курсе" loading="lazy">
@@ -466,102 +608,125 @@ footer{ background:#0B0B0B; color:#6E6E6E; border-top:1px solid #1D1D1D; padding
   </div>
 </section>
 
-<section class="sec" id="price">
+<section class="sec" id="price" style="background:var(--paper-2)">
   <div class="wrap">
-    <div class="head rv">
-      <div class="t"><span class="lbl">Цена</span><h2>Два варианта<br><span class="thin">и оба без подписки</span></h2></div>
-      <p>Доступ навсегда, обновления курса тоже. Никаких ежемесячных платежей и продлений.</p>
+    <div class="rule rv"><span class="mono">08 / Цена</span><span class="ln"></span><span class="mono">без подписки</span></div>
+    <div class="head rv" style="margin-bottom:clamp(26px,3.4vw,44px)">
+      <h2>Два варианта</h2>
+      <p>Доступ навсегда, обновления курса тоже. Никаких ежемесячных платежей.</p>
     </div>
-    <div class="plans rv">
-      <div class="plan">
+    <div class="plans">
+      <div class="plan rv">
         <h3>Курс</h3>
         <div class="cond">Доступ навсегда</div>
-        <div class="price">4 900 <span style="font-size:.55em">₽</span></div>
+        <div class="pr">4 900 ₽</div>
         <ul>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12.5 9.5 18 20 6.5"></path></svg>Восемь модулей целиком</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12.5 9.5 18 20 6.5"></path></svg>Пять рабочих инструментов</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12.5 9.5 18 20 6.5"></path></svg>Три файла правил для нейросети</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12.5 9.5 18 20 6.5"></path></svg>PDF-шпаргалка на пять страниц</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12.5 9.5 18 20 6.5"></path></svg>Все будущие обновления</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"></path></svg>Восемь модулей целиком</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"></path></svg>Пять рабочих инструментов</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"></path></svg>Три файла правил для нейросети</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"></path></svg>PDF-шпаргалка на пять страниц</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"></path></svg>Все будущие обновления</li>
         </ul>
-        <button class="btn btn-line" type="button" data-buy="Курс" data-price="4900">Купить курс</button>
+        <button class="btn btn-ln" type="button" data-buy="Курс" data-price="4900">Купить курс</button>
       </div>
-      <div class="plan pick">
+      <div class="plan pick rv">
         <h3>Курс и разбор</h3>
         <div class="cond">Курс плюс работа со мной</div>
-        <div class="price">9 900 <span style="font-size:.55em">₽</span></div>
+        <div class="pr">9 900 ₽</div>
         <ul>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12.5 9.5 18 20 6.5"></path></svg>Всё из первого варианта</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12.5 9.5 18 20 6.5"></path></svg>Разбор восьми твоих заданий в переписке</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12.5 9.5 18 20 6.5"></path></svg>Прогон твоего первого сайта по семи признакам</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12.5 9.5 18 20 6.5"></path></svg>Помощь с оценкой первого реального заказа</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12.5 9.5 18 20 6.5"></path></svg>Ответы в телеграме, без созвонов</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"></path></svg>Всё из первого варианта</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"></path></svg>Разбор восьми твоих заданий в переписке</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"></path></svg>Прогон твоего первого сайта по семи признакам</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"></path></svg>Помощь с оценкой первого реального заказа</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"></path></svg>Ответы в телеграме, без созвонов</li>
         </ul>
         <button class="btn btn-red" type="button" data-buy="Курс и разбор" data-price="9900">Взять с разбором</button>
       </div>
     </div>
-    <p class="spec-p rv" style="margin-top:18px;max-width:52em">Оплата переводом, доступ выдаю в течение дня. Если после первого модуля поймёшь, что это не твоё — верну деньги, спорить не буду.</p>
+    <p class="note rv" style="margin-top:22px;max-width:52em">Оплата переводом, доступ выдаю в течение дня. Если после первого модуля поймёшь, что это не твоё — верну деньги, спорить не буду.</p>
   </div>
 </section>
 
-<section class="sec" style="padding-top:0">
+<section class="sec">
   <div class="wrap">
-    <div class="nope rv">
-      <span class="lbl">Честно</span>
-      <h2 style="margin-top:14px">Кому этот курс<br><span class="thin">не подойдёт</span></h2>
-      <div class="nope-list">
-        <div class="nope-i">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"></path></svg>
-          <div><b>Тем, кто хочет стать программистом</b><span>Здесь не учат писать код. Здесь учат ставить задачу, править и сдавать работу.</span></div>
-        </div>
-        <div class="nope-i">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"></path></svg>
-          <div><b>Тем, кто ждёт заработок без работы</b><span>Сайт нейросеть соберёт. Клиента придётся искать самому, и это дольше, чем сборка.</span></div>
-        </div>
-        <div class="nope-i">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"></path></svg>
-          <div><b>Практикующим веб-дизайнерам</b><span>Если ты уже делаешь сайты руками в Фигме — семь признаков ты и так знаешь. Забирай файлы правил, они бесплатные.</span></div>
-        </div>
-        <div class="nope-i">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"></path></svg>
-          <div><b>Тем, кто не готов вычитывать текст</b><span>Самый скучный шаг курса — читать глазами всё, что написала нейросеть. Без него результат разваливается.</span></div>
-        </div>
+    <div class="rule rv"><span class="mono">09 / Честно</span><span class="ln"></span><span class="mono">чтобы не было возвратов</span></div>
+    <div class="head rv" style="margin-bottom:clamp(26px,3.4vw,44px)"><h2>Кому не подойдёт</h2></div>
+    <div class="nope">
+      <div class="nope-i rv">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"></path></svg>
+        <div><b>Тем, кто хочет стать программистом</b><span>Здесь не учат писать код. Здесь учат ставить задачу, править и сдавать работу.</span></div>
+      </div>
+      <div class="nope-i rv">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"></path></svg>
+        <div><b>Тем, кто ждёт заработок без работы</b><span>Сайт нейросеть соберёт. Клиента придётся искать самому, и это дольше, чем сборка.</span></div>
+      </div>
+      <div class="nope-i rv">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"></path></svg>
+        <div><b>Практикующим веб-дизайнерам</b><span>Если ты уже делаешь сайты руками в Фигме — семь признаков ты и так знаешь.</span></div>
+      </div>
+      <div class="nope-i rv">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"></path></svg>
+        <div><b>Тем, кто не готов вычитывать текст</b><span>Самый скучный шаг курса — читать глазами всё, что написала нейросеть. Без него результат разваливается.</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="sec" style="padding-top:0">
+<section class="sec" style="background:var(--paper-2)">
   <div class="wrap">
-    <div class="head rv"><div class="t"><span class="lbl">Вопросы</span><h2 style="margin-top:14px">Что спрашивают</h2></div></div>
-    <div class="faq" id="faq">
-      <div class="q"><button type="button">Нужно ли уметь программировать?<span class="ch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg></span></button>
-        <div class="a"><p>Нет. Ни строчки кода ты не пишешь — его пишет нейросеть. Твоя работа: поставить задачу, посмотреть результат, сказать, что поправить, и принять работу. Курс как раз про эти четыре шага.</p></div></div>
-      <div class="q"><button type="button">Какая нейросеть нужна и сколько она стоит?<span class="ch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg></span></button>
+    <div class="rule rv"><span class="mono">10 / Вопросы</span><span class="ln"></span></div>
+    <div class="faq rv" id="faq">
+      <div class="q"><button type="button">Нужно ли уметь программировать?<span class="ch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></span></button>
+        <div class="a"><p>Нет. Ни строчки кода ты не пишешь — его пишет нейросеть. Твоя работа: поставить задачу, посмотреть результат, сказать, что поправить, и принять работу. Курс про эти четыре шага.</p></div></div>
+      <div class="q"><button type="button">Какая нейросеть нужна и сколько она стоит?<span class="ch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></span></button>
         <div class="a"><p>Метод работает в любой: Claude, ChatGPT, DeepSeek, GigaChat. В курсе показываю на Claude, потому что он лучше держит длинную вёрстку, и разбираю, как оплатить подписку из России. На бесплатных тарифах тоже получается, просто дольше.</p></div></div>
-      <div class="q"><button type="button">Сколько времени занимает один сайт?<span class="ch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg></span></button>
+      <div class="q"><button type="button">Сколько времени занимает один сайт?<span class="ch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></span></button>
         <div class="a"><p>Первый — день или два, пока привыкаешь. Дальше лендинг собирается за вечер, если у клиента есть тексты и фото. Больше всего времени уходит не на сборку, а на выяснение задачи и вычитку.</p></div></div>
-      <div class="q"><button type="button">Курс обновляется? Нейросети меняются каждый месяц<span class="ch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg></span></button>
-        <div class="a"><p>Да, и обновления входят в цену. Восьмой модуль про нейрослоп, например, появился уже после первой версии. Метод при этом от модели почти не зависит: признаки шаблонности одинаковы у всех, потому что учились они на одном и том же.</p></div></div>
-      <div class="q"><button type="button">Как получить доступ после оплаты?<span class="ch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg></span></button>
-        <div class="a"><p>Пишешь в телеграм, я присылаю реквизиты, после перевода — ссылку и пароль. В течение дня, обычно быстрее. Курс открывается в браузере, ничего скачивать и устанавливать не надо, работает и с телефона.</p></div></div>
-      <div class="q"><button type="button">А если не понравится?<span class="ch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg></span></button>
-        <div class="a"><p>Сначала открой демо — там витрина работ и первый модуль целиком, без оплаты и пароля. Этого хватит, чтобы понять формат. Если купил и после первого модуля решил, что не твоё — верну деньги без разбирательств.</p></div></div>
+      <div class="q"><button type="button">Курс обновляется? Нейросети меняются каждый месяц<span class="ch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></span></button>
+        <div class="a"><p>Да, и обновления входят в цену. Восьмой модуль про нейрослоп появился уже после первой версии. Метод при этом от модели почти не зависит: признаки шаблонности одинаковы у всех, потому что учились они на одном и том же.</p></div></div>
+      <div class="q"><button type="button">Как получить доступ после оплаты?<span class="ch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></span></button>
+        <div class="a"><p>Пишешь в телеграм, я присылаю реквизиты, после перевода — ссылку и пароль. В течение дня, обычно быстрее. Курс открывается в браузере, ничего скачивать не надо, работает и с телефона.</p></div></div>
+      <div class="q"><button type="button">А если не понравится?<span class="ch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></span></button>
+        <div class="a"><p>Сначала открой демо — там витрина работ и первый модуль целиком, без оплаты и пароля. Если купил и после первого модуля решил, что не твоё — верну деньги без разбирательств.</p></div></div>
     </div>
   </div>
 </section>
 
-<section class="final sec" id="start">
-  <div class="wrap in">
-    <div class="rv">
-      <span class="lbl">Начать</span>
-      <h2 style="margin-top:14px">Посмотри демо,<br><span class="thin">потом решай</span></h2>
-      <p>Первый модуль и витрина работ открыты бесплатно, без пароля и без регистрации. Файл с чек-листом тоже можно забрать прямо сейчас и прогнать по нему любой свой сайт.</p>
-      <div class="cta">
-        <a href="demo/" class="btn btn-red">Открыть демо-версию
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h13"></path><path d="M12.5 6 19 12l-6.5 6"></path></svg>
+<section class="sec dark">
+  <div class="wrap">
+    <div class="rule rv"><span class="mono">11 / Самопроверка</span><span class="ln"></span><span class="mono">эта страница</span></div>
+    <div class="stamp">
+      <div class="rv">
+        <h2>Эта страница прошла<br>собственный чек-лист</h2>
+        <p class="lede" style="margin-top:22px">Было бы странно учить убирать нейрослоп на сайте, который сам им набит. Справа — результат прогона по тому же файлу, который лежит выше бесплатно. Проверь сам, если не веришь.</p>
+        <a href="files/chek-list-7-priznakov.md" download class="btn btn-ln" style="margin-top:28px">Забрать чек-лист
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"></path><path d="M7.5 10.5 12 15l4.5-4.5"></path><path d="M4 18.5v1.5h16v-1.5"></path></svg>
         </a>
-        <a href="#" class="btn btn-line" data-tg>Написать в телеграм</a>
+      </div>
+      <div class="stamp-box rv">
+        <div class="stamp-row"><span>Первый экран без затемнения-костыля</span><b>чисто</b></div>
+        <div class="stamp-row"><span>Сгенерированных людей нет</span><b>чисто</b></div>
+        <div class="stamp-row"><span>Один приём выделения на элемент</span><b>чисто</b></div>
+        <div class="stamp-row"><span>Заголовки прямоугольником, межстрочка 92%</span><b>чисто</b></div>
+        <div class="stamp-row"><span>Ни одного эмодзи и символа с клавиатуры</span><b>чисто</b></div>
+        <div class="stamp-row"><span>Ни одной точки-разделителя</span><b>чисто</b></div>
+        <div class="stamp-row"><span>Все цифры проверены и настоящие</span><b>чисто</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec dark" id="start" style="padding-top:0">
+  <div class="wrap final-g">
+    <div class="rv">
+      <span class="mono">Начать</span>
+      <h2 style="margin:20px 0 0">Посмотри демо,<br>потом решай</h2>
+      <p class="lede" style="margin-top:22px">Первый модуль и витрина работ открыты бесплатно, без пароля и регистрации.</p>
+      <div class="final-cta">
+        <a href="demo/" class="btn btn-red">Открыть демо
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13"></path><path d="M12.5 6 19 12l-6.5 6"></path></svg>
+        </a>
+        <a href="#" class="btn btn-ln" data-tg>Написать в телеграм</a>
       </div>
     </div>
     <div class="rv"><img src="img/laptop.jpg" alt="Курс открыт в браузере" loading="lazy"></div>
@@ -574,7 +739,7 @@ footer{ background:#0B0B0B; color:#6E6E6E; border-top:1px solid #1D1D1D; padding
   <div class="wrap foot">
     <span>Сайты через ИИ — практический курс</span>
     <span>Автор — Cold Infinity</span>
-    <span>2026</span>
+    <span class="mono">2026</span>
   </div>
 </footer>
 
@@ -594,7 +759,6 @@ var CFG = {
 
   $$('[data-tg]').forEach(function(a){ a.href='https://t.me/'+CFG.tg; a.target='_blank'; a.rel='noopener'; });
 
-  /* ---- покупка ---- */
   $$('[data-buy]').forEach(function(b){
     b.addEventListener('click', function(){
       var name=b.getAttribute('data-buy'), price=b.getAttribute('data-price');
@@ -606,35 +770,96 @@ var CFG = {
     });
   });
 
-  /* ---- стенд ---- */
+  /* ---------- COMPARE ---------- */
   (function(){
-    var stand=$('#stand'); if(!stand) return;
-    var specs=$$('.spec',stand), btns=$$('.sw button',stand);
-    function setSpec(sp,good){
-      sp.classList.toggle('good',good);
-      var b=$('.spec-t',sp); if(b) b.textContent = good ? 'Показать слоп' : 'Как надо';
+    var box=$('#cmp'); if(!box) return;
+    var stage=$('.cmp-stage',box), kn=$('#cmpKn'), pos=50, dragging=false, touched=false;
+    function set(p){
+      pos=Math.max(0,Math.min(100,p));
+      box.style.setProperty('--x', pos+'%');
+      kn.setAttribute('aria-valuenow', Math.round(pos));
     }
-    function syncTop(){
-      var n=stand.querySelectorAll('.spec.good').length;
-      btns.forEach(function(x){
-        var g=x.getAttribute('data-all')==='good';
-        x.classList.toggle('on', n===specs.length ? g : (n===0 ? !g : false));
-      });
+    function fromEvent(e){
+      var r=stage.getBoundingClientRect();
+      set((e.clientX-r.left)/r.width*100);
     }
-    specs.forEach(function(sp){
-      var b=$('.spec-t',sp); if(!b) return;
-      b.addEventListener('click',function(){ setSpec(sp,!sp.classList.contains('good')); syncTop(); });
+    box.addEventListener('pointerdown',function(e){
+      dragging=true; touched=true;
+      try{ box.setPointerCapture(e.pointerId); }catch(err){}
+      fromEvent(e);
     });
-    btns.forEach(function(b){
-      b.addEventListener('click',function(){
-        var good=b.getAttribute('data-all')==='good';
-        specs.forEach(function(sp){ setSpec(sp,good); });
-        syncTop();
+    box.addEventListener('pointermove',function(e){ if(dragging){ e.preventDefault(); fromEvent(e); } });
+    box.addEventListener('pointerup',function(){ dragging=false; });
+    box.addEventListener('pointercancel',function(){ dragging=false; });
+    kn.addEventListener('keydown',function(e){
+      var step = e.shiftKey ? 10 : 3;
+      if(e.key==='ArrowLeft'){ e.preventDefault(); touched=true; set(pos-step); }
+      if(e.key==='ArrowRight'){ e.preventDefault(); touched=true; set(pos+step); }
+      if(e.key==='Home'){ e.preventDefault(); touched=true; set(0); }
+      if(e.key==='End'){ e.preventDefault(); touched=true; set(100); }
+    });
+    set(50);
+    if('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      var shown=false;
+      var io=new IntersectionObserver(function(es){
+        es.forEach(function(en){
+          if(!en.isIntersecting || shown) return;
+          shown=true; io.disconnect();
+          /* один проход: показываем обе стороны целиком, потом ставим ровно */
+          var keys=[[0,50],[.30,86],[.68,14],[1,50]], t0=null, dur=2600;
+          function ease(x){ return x<.5 ? 4*x*x*x : 1-Math.pow(-2*x+2,3)/2; }
+          function at(k){
+            for(var i=1;i<keys.length;i++){
+              if(k<=keys[i][0]){
+                var a=keys[i-1], b=keys[i];
+                var t=(k-a[0])/(b[0]-a[0]);
+                return a[1]+(b[1]-a[1])*ease(t);
+              }
+            }
+            return 50;
+          }
+          function tick(ts){
+            if(touched) return;
+            if(!t0) t0=ts;
+            var k=Math.min(1,(ts-t0)/dur);
+            set(at(k));
+            if(k<1) requestAnimationFrame(tick); else set(50);
+          }
+          setTimeout(function(){ if(!touched) requestAnimationFrame(tick); }, 380);
+        });
+      },{threshold:.4});
+      io.observe(box);
+    }
+  })();
+
+  /* ---------- GAME ---------- */
+  (function(){
+    var ar=$('#gameAr'); if(!ar) return;
+    var NAMES={
+      grad:'Фиолетово-синий градиент',
+      eye:'Капс-ярлычок в тире',
+      arrow:'Стрелка прямо с клавиатуры',
+      stats:'Выдуманная статистика'
+    };
+    var found={}, total=4;
+    var score=$('#gScore'), done=$('#gDone');
+    $$('.hot',ar).forEach(function(h){
+      h.addEventListener('click',function(){
+        var k=h.getAttribute('data-k');
+        if(found[k]) return;
+        found[k]=true;
+        var n=Object.keys(found).length;
+        h.classList.add('got');
+        $('.pin',h).textContent=n;
+        var li=$('#gList li[data-k="'+k+'"]');
+        if(li){ li.classList.add('got'); $('[data-t]',li).textContent=NAMES[k]; }
+        score.textContent=n;
+        if(n===total) done.classList.add('on');
       });
     });
   })();
 
-  /* ---- faq ---- */
+  /* ---------- FAQ ---------- */
   $$('#faq .q button').forEach(function(b){
     b.addEventListener('click',function(){
       var q=b.parentNode, was=q.classList.contains('open');
@@ -643,13 +868,13 @@ var CFG = {
     });
   });
 
-  /* ---- reveal ---- */
+  /* ---------- REVEAL ---------- */
   if('IntersectionObserver' in window){
-    var io=new IntersectionObserver(function(es){
-      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
-    },{rootMargin:'0px 0px -7% 0px', threshold:.05});
-    $$('.rv').forEach(function(el){ io.observe(el); });
-    setTimeout(function(){ $$('.rv').forEach(function(el){ el.classList.add('in'); }); }, 2500);
+    var io2=new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io2.unobserve(e.target); } });
+    },{rootMargin:'0px 0px -6% 0px', threshold:.04});
+    $$('.rv').forEach(function(el){ io2.observe(el); });
+    setTimeout(function(){ $$('.rv').forEach(function(el){ el.classList.add('in'); }); }, 2600);
   } else {
     $$('.rv').forEach(function(el){ el.classList.add('in'); });
   }
