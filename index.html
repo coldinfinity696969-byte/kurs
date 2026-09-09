@@ -274,6 +274,21 @@ a.file:hover .act{color:var(--red)}
 .tools-pic{display:grid;gap:12px}
 .tools-pic img{width:100%;border:1px solid var(--line)}
 
+/* ---- автор ---- */
+.auth{display:grid;grid-template-columns:minmax(0,.62fr) minmax(0,1fr);gap:clamp(26px,4vw,72px);align-items:start}
+.auth-ph{position:relative;border:1px solid var(--line);background:var(--ink);overflow:hidden}
+.auth-ph img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:68% center;display:block}
+.auth-ph figcaption{position:absolute;left:0;right:0;bottom:0;padding:12px 14px;
+  background:linear-gradient(transparent,rgba(10,9,8,.92));color:#DCD8D0;
+  font-family:var(--m);font-size:10.5px;letter-spacing:.07em;text-transform:uppercase}
+.auth q{display:block;font-family:var(--d);font-weight:700;font-size:clamp(19px,2vw,26px);
+  line-height:1.18;letter-spacing:-.035em;quotes:none;margin-bottom:26px}
+.auth-l{display:grid;gap:0;border-top:1px solid var(--line);margin-top:28px}
+.auth-l div{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px;align-items:baseline;
+  padding:15px 0;border-bottom:1px solid var(--line);font-size:15.5px}
+.auth-l div span{color:var(--mut)}
+.auth-l div b{font-family:var(--m);font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--dim);white-space:nowrap}
+
 .plans{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;max-width:900px}
 .plan{background:#fff;border:1px solid var(--line);padding:36px 34px 38px;display:flex;flex-direction:column}
 .plan.pick{border:1.5px solid var(--red)}
@@ -309,6 +324,7 @@ a.file:hover .act{color:var(--red)}
 .stamp-row:last-child{border-bottom:0}
 .stamp-row span{color:#8B867D}
 .stamp-row b{font-family:var(--m);font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;color:#5FD08A}
+.stamp-row b.warn{color:#E0B65C}
 
 .final-g{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(28px,4vw,72px);align-items:center}
 .final-g img{width:100%;border:1px solid #33312D}
@@ -327,7 +343,7 @@ footer{background:var(--ink);color:#75716A;border-top:1px solid #26241F;padding:
 }
 @media (max-width:920px){
   .nav-l{display:none}
-  .hero-g,.g3,.plans,.nope,.tools,.final-g,.stamp{grid-template-columns:minmax(0,1fr)}
+  .hero-g,.g3,.plans,.nope,.tools,.final-g,.stamp,.auth{grid-template-columns:minmax(0,1fr)}
   .facts{grid-template-columns:repeat(2,minmax(0,1fr))}
   .facts>div{padding-right:16px}
   .facts>div:nth-child(2){border-right:0}
@@ -608,9 +624,31 @@ footer{background:var(--ink);color:#75716A;border-top:1px solid #26241F;padding:
   </div>
 </section>
 
+<section class="sec">
+  <div class="wrap">
+    <div class="rule rv"><span class="mono">08 / Кто ведёт</span><span class="ln"></span><span class="mono">Новосибирск</span></div>
+    <div class="auth">
+      <figure class="auth-ph rv">
+        <img src="img/hero-wide.jpg" alt="Автор курса">
+        <figcaption>Никита / автор курса</figcaption>
+      </figure>
+      <div class="rv">
+        <q>Я не преподаватель. Я собираю сайты нейросетью на заказ, и курс — это мой рабочий метод, а не пересказ чужих статей.</q>
+        <p class="note">Всё, что внутри, я сначала применил на реальных проектах: сайт концертного директора, визитка производства закалённого стекла, ИИ-ассистент для 1С. Восьмой модуль появился после того, как я прогнал по семи признакам собственные работы и нашёл слоп в трёх из них.</p>
+        <div class="auth-l">
+          <div><span>Собираю сайты нейросетью на заказ</span><b>практика</b></div>
+          <div><span>Реальные клиентские проекты в портфолио</span><b>не учебные</b></div>
+          <div><span>Отвечаю в телеграме сам, без ассистентов</span><b>связь</b></div>
+          <div><span>Курс обновляю, когда меняются модели</span><b>поддержка</b></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="sec" id="price" style="background:var(--paper-2)">
   <div class="wrap">
-    <div class="rule rv"><span class="mono">08 / Цена</span><span class="ln"></span><span class="mono">без подписки</span></div>
+    <div class="rule rv"><span class="mono">09 / Цена</span><span class="ln"></span><span class="mono">без подписки</span></div>
     <div class="head rv" style="margin-bottom:clamp(26px,3.4vw,44px)">
       <h2>Два варианта</h2>
       <p>Доступ навсегда, обновления курса тоже. Никаких ежемесячных платежей.</p>
@@ -649,7 +687,7 @@ footer{background:var(--ink);color:#75716A;border-top:1px solid #26241F;padding:
 
 <section class="sec">
   <div class="wrap">
-    <div class="rule rv"><span class="mono">09 / Честно</span><span class="ln"></span><span class="mono">чтобы не было возвратов</span></div>
+    <div class="rule rv"><span class="mono">10 / Честно</span><span class="ln"></span><span class="mono">чтобы не было возвратов</span></div>
     <div class="head rv" style="margin-bottom:clamp(26px,3.4vw,44px)"><h2>Кому не подойдёт</h2></div>
     <div class="nope">
       <div class="nope-i rv">
@@ -674,7 +712,7 @@ footer{background:var(--ink);color:#75716A;border-top:1px solid #26241F;padding:
 
 <section class="sec" style="background:var(--paper-2)">
   <div class="wrap">
-    <div class="rule rv"><span class="mono">10 / Вопросы</span><span class="ln"></span></div>
+    <div class="rule rv"><span class="mono">11 / Вопросы</span><span class="ln"></span></div>
     <div class="faq rv" id="faq">
       <div class="q"><button type="button">Нужно ли уметь программировать?<span class="ch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></span></button>
         <div class="a"><p>Нет. Ни строчки кода ты не пишешь — его пишет нейросеть. Твоя работа: поставить задачу, посмотреть результат, сказать, что поправить, и принять работу. Курс про эти четыре шага.</p></div></div>
@@ -694,18 +732,18 @@ footer{background:var(--ink);color:#75716A;border-top:1px solid #26241F;padding:
 
 <section class="sec dark">
   <div class="wrap">
-    <div class="rule rv"><span class="mono">11 / Самопроверка</span><span class="ln"></span><span class="mono">эта страница</span></div>
+    <div class="rule rv"><span class="mono">12 / Самопроверка</span><span class="ln"></span><span class="mono">эта страница</span></div>
     <div class="stamp">
       <div class="rv">
         <h2>Эта страница прошла<br>собственный чек-лист</h2>
-        <p class="lede" style="margin-top:22px">Было бы странно учить убирать нейрослоп на сайте, который сам им набит. Справа — результат прогона по тому же файлу, который лежит выше бесплатно. Проверь сам, если не веришь.</p>
+        <p class="lede" style="margin-top:22px">Было бы странно учить убирать нейрослоп на сайте, который сам им набит. Справа — результат прогона по тому же файлу, который лежит выше бесплатно. Один пункт с оговоркой: врать в свою пользу было бы иронично.</p>
         <a href="files/chek-list-7-priznakov.md" download class="btn btn-ln" style="margin-top:28px">Забрать чек-лист
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"></path><path d="M7.5 10.5 12 15l4.5-4.5"></path><path d="M4 18.5v1.5h16v-1.5"></path></svg>
         </a>
       </div>
       <div class="stamp-box rv">
         <div class="stamp-row"><span>Первый экран без затемнения-костыля</span><b>чисто</b></div>
-        <div class="stamp-row"><span>Сгенерированных людей нет</span><b>чисто</b></div>
+        <div class="stamp-row"><span>Портрет в шапке — ИИ, но авторский аватар, а не сток</span><b class="warn">с оговоркой</b></div>
         <div class="stamp-row"><span>Один приём выделения на элемент</span><b>чисто</b></div>
         <div class="stamp-row"><span>Заголовки прямоугольником, межстрочка 92%</span><b>чисто</b></div>
         <div class="stamp-row"><span>Ни одного эмодзи и символа с клавиатуры</span><b>чисто</b></div>
